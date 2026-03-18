@@ -6,26 +6,26 @@ import { SEO } from '../components/SEO';
 export const Research = () => {
   return (
     <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto space-y-20">
-      <SEO 
-        title="Our Research" 
-        description="Decoding the future of biology. Explore PharmaNext's innovative research in cellular analysis and targeted therapies." 
+      <SEO
+        title="Our Research"
+        description="Decoding the future of biology. Explore PharmaNext's innovative research in cellular analysis and targeted therapies."
       />
       <header className="max-w-3xl space-y-6 text-center md:text-left">
-        <motion.span 
+        <motion.span
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="text-xs font-bold uppercase tracking-[0.3em] text-black/40"
         >
           Our Research
         </motion.span>
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter leading-none"
         >
           Decoding the <br className="hidden sm:block" /> Future of Biology.
         </motion.h1>
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
@@ -35,14 +35,14 @@ export const Research = () => {
         </motion.p>
       </header>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         className="relative h-[300px] md:h-[400px] rounded-5xl overflow-hidden glass"
       >
-        <img 
-          src="https://images.unsplash.com/photo-1532187875605-1ef6c237ddc4?auto=format&fit=crop&q=80&w=1600" 
-          alt="Molecular Research Innovation" 
+        <img
+          src="https://images.pexels.com/photos/35967917/pexels-photo-35967917.png"
+          alt="Molecular Research Innovation"
           className="w-full h-full object-cover opacity-60"
           referrerPolicy="no-referrer"
         />
@@ -68,9 +68,9 @@ export const Research = () => {
             className="glass rounded-4xl space-y-6 group cursor-pointer overflow-hidden flex flex-col"
           >
             <div className="h-48 overflow-hidden relative">
-              <img 
-                src={item.image} 
-                alt={item.title} 
+              <img
+                src={item.image}
+                alt={item.title}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80"
                 referrerPolicy="no-referrer"
               />
@@ -82,7 +82,7 @@ export const Research = () => {
               </div>
               <h3 className="text-xl md:text-2xl font-display font-bold">{item.title}</h3>
               <p className="text-sm md:text-base text-black/60">{item.desc}</p>
-              <button 
+              <button
                 onClick={() => alert(`Learning more about ${item.title}...`)}
                 className="flex items-center gap-2 text-xs md:text-sm font-bold group-hover:translate-x-2 transition-transform"
               >
@@ -100,7 +100,7 @@ export const Research = () => {
             <p className="text-black/60 text-sm md:text-base">
               Join our mission to advance medical science. We are currently looking for volunteers for our latest respiratory health study.
             </p>
-            <button 
+            <button
               onClick={() => alert('Trial application form will be available soon!')}
               className="w-full sm:w-auto bg-black text-white px-10 py-4 rounded-full font-bold hover:scale-105 transition-transform"
             >
@@ -108,9 +108,9 @@ export const Research = () => {
             </button>
           </div>
           <div className="aspect-video rounded-4xl overflow-hidden shadow-2xl">
-            <img 
-              src="https://images.unsplash.com/photo-1576091160550-2173dad99963?auto=format&fit=crop&q=80&w=1200" 
-              alt="Clinical Research Participation" 
+            <img
+              src="https://images.pexels.com/photos/8531342/pexels-photo-8531342.jpeg"
+              alt="Clinical Research Participation"
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
             />

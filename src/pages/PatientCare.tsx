@@ -9,26 +9,26 @@ export const PatientCare = () => {
 
   return (
     <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto space-y-16 md:space-y-20">
-      <SEO 
-        title="Patient Care" 
-        description="Care that understands you. PharmaNext offers comprehensive support programs and personalized medical care." 
+      <SEO
+        title="Patient Care"
+        description="Care that understands you. PharmaNext offers comprehensive support programs and personalized medical care."
       />
       <header className="max-w-3xl space-y-6 text-center md:text-left">
-        <motion.span 
+        <motion.span
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="text-xs font-bold uppercase tracking-[0.3em] text-black/40"
         >
           Patient Care
         </motion.span>
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter leading-none"
         >
           Care That <br className="hidden sm:block" /> Understands You.
         </motion.h1>
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
@@ -38,14 +38,14 @@ export const PatientCare = () => {
         </motion.p>
       </header>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         className="relative h-[300px] md:h-[400px] rounded-5xl overflow-hidden glass"
       >
-        <img 
-          src="https://images.unsplash.com/photo-1584515729963-6f502766230b?auto=format&fit=crop&q=80&w=1600" 
-          alt="Patient-Centered Care Approach" 
+        <img
+          src="https://images.pexels.com/photos/20860581/pexels-photo-20860581.jpeg?auto=format&fit=crop&q=80&w=1600"
+          alt="Patient-Centered Care Approach"
           className="w-full h-full object-cover opacity-80"
           referrerPolicy="no-referrer"
         />
@@ -58,15 +58,15 @@ export const PatientCare = () => {
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           className="glass rounded-5xl overflow-hidden flex flex-col group"
         >
           <div className="h-48 overflow-hidden">
-            <img 
-              src="https://images.unsplash.com/photo-1576765608596-b2042ad8bf0a?auto=format&fit=crop&q=80&w=1000" 
-              alt="Patient Support Programs" 
+            <img
+              src="https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg?auto=format&fit=crop&q=80&w=1000"
+              alt="Patient Support Programs"
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
               referrerPolicy="no-referrer"
             />
@@ -87,7 +87,7 @@ export const PatientCare = () => {
                 </li>
               ))}
             </ul>
-            <button 
+            <button
               onClick={() => alert('Learning more about our support programs...')}
               className="flex items-center gap-2 font-bold text-emerald-600 text-sm md:text-base"
             >
@@ -96,15 +96,15 @@ export const PatientCare = () => {
           </div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           className="glass-dark rounded-5xl overflow-hidden flex flex-col group text-white"
         >
           <div className="h-48 overflow-hidden">
-            <img 
-              src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=1000" 
-              alt="Personalized Medical Care" 
+            <img
+              src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=1000"
+              alt="Personalized Medical Care"
               className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700"
               referrerPolicy="no-referrer"
             />
@@ -125,7 +125,7 @@ export const PatientCare = () => {
                 </li>
               ))}
             </ul>
-            <button 
+            <button
               onClick={() => setIsPortalOpen(true)}
               className="flex items-center gap-2 font-bold text-white text-sm md:text-base"
             >
@@ -156,9 +156,9 @@ export const PatientCare = () => {
         ))}
       </section>
 
-      <PatientPortalModal 
-        isOpen={isPortalOpen} 
-        onClose={() => setIsPortalOpen(false)} 
+      <PatientPortalModal
+        isOpen={isPortalOpen}
+        onClose={() => setIsPortalOpen(false)}
       />
     </div>
   );

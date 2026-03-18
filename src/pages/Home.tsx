@@ -11,9 +11,9 @@ export const Home = () => {
 
   return (
     <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto space-y-24">
-      <SEO 
-        title="Home" 
-        description="PharmaNext - Redefining the boundaries of modern medicine through advanced molecular science and empathetic care." 
+      <SEO
+        title="Home"
+        description="PharmaNext - Redefining the boundaries of modern medicine through advanced molecular science and empathetic care."
       />
       {/* Hero Section */}
       <section className="grid lg:grid-cols-2 gap-12 items-center">
@@ -31,13 +31,13 @@ export const Home = () => {
             We merge advanced molecular science with empathetic care to redefine the boundaries of modern medicine.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <button 
+            <button
               onClick={() => navigate('/research')}
               className="bg-black text-white px-8 py-4 rounded-4xl font-medium flex items-center justify-center gap-2 group"
             >
               Our Research <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </button>
-            <button 
+            <button
               onClick={() => navigate('/care')}
               className="glass px-8 py-4 rounded-4xl font-medium"
             >
@@ -55,20 +55,20 @@ export const Home = () => {
         >
           {/* Organic Shape Container */}
           <div className="aspect-square overflow-hidden group relative" style={{ borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' }}>
-            <motion.img 
+            <motion.img
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?auto=format&fit=crop&q=80&w=1200" 
-              alt="Advanced Molecular Research" 
+              src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?auto=format&fit=crop&q=80&w=1200"
+              alt="Advanced Molecular Research"
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
             />
             {/* Subtle Overlay for depth */}
             <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500" />
           </div>
-          
+
           {/* Floating Stats Cards - Hidden on small mobile for clarity */}
-          <motion.div 
+          <motion.div
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             className="absolute -top-4 -right-2 sm:-top-6 sm:-right-6 glass p-4 sm:p-6 rounded-4xl space-y-1 sm:space-y-2 z-10"
@@ -80,7 +80,7 @@ export const Home = () => {
             <div className="text-2xl sm:text-3xl font-display font-bold">142+</div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
             className="absolute -bottom-4 -left-2 sm:-bottom-6 sm:-left-6 glass p-4 sm:p-6 rounded-4xl space-y-1 sm:space-y-2 z-10"
@@ -96,12 +96,12 @@ export const Home = () => {
 
       {/* Marquee Section */}
       <div className="py-8 md:py-12 border-y border-black/5 overflow-hidden">
-        <motion.div 
+        <motion.div
           animate={{ x: [0, -1000] }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
           className="flex gap-12 md:gap-20 whitespace-nowrap"
         >
-          {[1,2,3,4,5].map((i) => (
+          {[1, 2, 3, 4, 5].map((i) => (
             <div key={i} className="flex gap-12 md:gap-20 items-center">
               <span className="font-display text-2xl md:text-4xl font-bold opacity-10">GLOBAL INNOVATION AWARD 2025</span>
               <span className="font-display text-2xl md:text-4xl font-bold opacity-10">ISO 9001 CERTIFIED</span>
@@ -124,14 +124,14 @@ export const Home = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[600px]">
-          <motion.div 
+          <motion.div
             whileHover={{ scale: 0.98 }}
             onClick={() => alert('Opening Genomic Sequencing details...')}
             className="md:col-span-2 md:row-span-2 glass rounded-4xl p-8 md:p-10 flex flex-col justify-between group cursor-pointer overflow-hidden relative min-h-[400px] md:min-h-0"
           >
-            <img 
-              src="https://images.unsplash.com/photo-1532187863486-abf51ad9f69d?auto=format&fit=crop&q=80&w=1000" 
-              alt="Genomic Sequencing" 
+            <img
+              src="https://images.pexels.com/photos/8940511/pexels-photo-8940511.jpeg"
+              alt="Genomic Sequencing"
               className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-700"
               referrerPolicy="no-referrer"
             />
@@ -144,7 +144,7 @@ export const Home = () => {
             <ArrowUpRight className="absolute top-10 right-10 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity" />
           </motion.div>
 
-          <motion.div 
+          <motion.div
             whileHover={{ scale: 0.98 }}
             onClick={() => alert('Opening Cardiovascular Health details...')}
             className="md:col-span-2 glass rounded-4xl p-8 flex items-center gap-8 group cursor-pointer"
@@ -158,7 +158,7 @@ export const Home = () => {
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             whileHover={{ scale: 0.98 }}
             onClick={() => alert('Opening Global Reach details...')}
             className="glass rounded-4xl p-8 flex flex-col justify-center items-center text-center space-y-4 group cursor-pointer"
@@ -168,7 +168,7 @@ export const Home = () => {
             <p className="text-xs text-black/40">Serving 40+ countries worldwide.</p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             whileHover={{ scale: 0.98 }}
             onClick={() => alert('Opening Rapid Response details...')}
             className="glass-dark rounded-4xl p-8 flex flex-col justify-center items-center text-center space-y-4 group cursor-pointer text-white"
@@ -209,12 +209,12 @@ export const Home = () => {
               <div className="flex items-center gap-8">
                 <span className={cn(
                   "px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest",
-                  trial.status === 'Recruiting' ? "bg-emerald-100 text-emerald-700" : 
-                  trial.status === 'Active' ? "bg-blue-100 text-blue-700" : "bg-gray-100 text-gray-700"
+                  trial.status === 'Recruiting' ? "bg-emerald-100 text-emerald-700" :
+                    trial.status === 'Active' ? "bg-blue-100 text-blue-700" : "bg-gray-100 text-gray-700"
                 )}>
                   {trial.status}
                 </span>
-                <button 
+                <button
                   onClick={() => alert(`Opening details for ${trial.title}...`)}
                   className="glass px-6 py-2 rounded-full text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black hover:text-white"
                 >
