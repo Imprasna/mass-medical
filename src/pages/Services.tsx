@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { SEO } from '../components/SEO';
 import { FlaskConical, ClipboardList, ShieldCheck, HeartHandshake, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { PatientPortalModal } from '../components/PatientPortalModal';
 
 const services = [
   {
@@ -59,6 +60,8 @@ const services = [
 ];
 
 export const Services = () => {
+  const [isPortalOpen, setIsPortalOpen] = useState(false);
+
   return (
     <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto space-y-24">
       <SEO 
@@ -131,7 +134,7 @@ export const Services = () => {
                 ))}
               </div>
               <button 
-                onClick={() => alert(`Requesting consultation for ${service.title}...`)}
+                onClick={() => setIsPortalOpen(true)}
                 className="w-full sm:w-auto bg-black text-white px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 group/btn hover:scale-105 transition-transform"
               >
                 Consultation <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
@@ -231,6 +234,11 @@ export const Services = () => {
           </motion.div>
         </div>
       </section>
+
+      <PatientPortalModal 
+        isOpen={isPortalOpen} 
+        onClose={() => setIsPortalOpen(false)} 
+      />
     </div>
   );
 };

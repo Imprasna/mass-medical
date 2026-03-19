@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { SEO } from '../components/SEO';
 import { Pill, Activity, Brain, Heart, Shield, Info, X, CheckCircle2 } from 'lucide-react';
+import { PatientPortalModal } from '../components/PatientPortalModal';
 
 const products = [
   {
@@ -68,6 +69,7 @@ const products = [
 
 export const Products = () => {
   const [selectedProduct, setSelectedProduct] = useState<typeof products[0] | null>(null);
+  const [isPortalOpen, setIsPortalOpen] = useState(false);
 
   return (
     <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto space-y-24">
@@ -220,7 +222,7 @@ export const Products = () => {
                   </div>
 
                   <button 
-                    onClick={() => alert(`Requesting monograph for ${selectedProduct.name}...`)}
+                    onClick={() => setIsPortalOpen(true)}
                     className="w-full bg-black text-white py-4 sm:py-5 rounded-2xl font-bold text-sm sm:text-base"
                   >
                     Request Product Monograph
@@ -231,6 +233,11 @@ export const Products = () => {
           </div>
         )}
       </AnimatePresence>
+
+      <PatientPortalModal 
+        isOpen={isPortalOpen} 
+        onClose={() => setIsPortalOpen(false)} 
+      />
     </div>
   );
 };

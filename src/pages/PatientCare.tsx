@@ -87,12 +87,12 @@ export const PatientCare = () => {
                 </li>
               ))}
             </ul>
-            <button
+            {/* <button
               onClick={() => alert('Learning more about our support programs...')}
               className="flex items-center gap-2 font-bold text-emerald-600 text-sm md:text-base"
             >
               Learn More <ArrowRight className="w-4 h-4" />
-            </button>
+            </button> */}
           </div>
         </motion.div>
 
