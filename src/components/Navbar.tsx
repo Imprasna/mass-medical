@@ -10,7 +10,7 @@ const navItems = [
   { name: 'About', path: '/about' },
   { name: 'Services', path: '/services' },
   { name: 'Products', path: '/products' },
-  { name: 'Research', path: '/research' },
+  // { name: 'Research', path: '/research' },
   { name: 'Patient Care', path: '/care' },
   { name: 'Contact', path: '/contact' },
 ];
@@ -27,7 +27,7 @@ export const Navbar = () => {
           <Link to="/" className="font-display font-bold text-xl tracking-tighter z-50">
             PHARMANEXT
           </Link>
-          
+
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navItems.map((item) => (
@@ -51,15 +51,15 @@ export const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            <button 
+            <button
               onClick={() => setIsPortalOpen(true)}
               className="hidden sm:block bg-black text-white px-6 py-2 rounded-full text-sm font-medium hover:scale-105 transition-transform"
             >
               Portal
             </button>
-            
+
             {/* Mobile Toggle */}
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="lg:hidden z-50 p-2 glass rounded-full"
             >
@@ -98,7 +98,7 @@ export const Navbar = () => {
                   </Link>
                 </motion.div>
               ))}
-              <motion.button 
+              <motion.button
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
@@ -115,9 +115,9 @@ export const Navbar = () => {
         )}
       </AnimatePresence>
 
-      <PatientPortalModal 
-        isOpen={isPortalOpen} 
-        onClose={() => setIsPortalOpen(false)} 
+      <PatientPortalModal
+        isOpen={isPortalOpen}
+        onClose={() => setIsPortalOpen(false)}
       />
     </>
   );

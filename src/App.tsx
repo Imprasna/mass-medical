@@ -7,7 +7,7 @@ import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Services } from './pages/Services';
 import { Products } from './pages/Products';
-import { Research } from './pages/Research';
+// import { Research } from './pages/Research';
 import { PatientCare } from './pages/PatientCare';
 import { Contact } from './pages/Contact';
 import { NewsletterForm } from './components/NewsletterForm';
@@ -41,35 +41,35 @@ export default function App() {
       <div className="min-h-screen relative">
         {/* Dynamic Background Gradients */}
         <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-          <motion.div 
-            animate={{ 
+          <motion.div
+            animate={{
               scale: [1, 1.2, 1],
               x: [0, 100, 0],
               y: [0, 50, 0]
             }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-blue-100/50 blur-[120px] rounded-full" 
+            className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-blue-100/50 blur-[120px] rounded-full"
           />
-          <motion.div 
-            animate={{ 
+          <motion.div
+            animate={{
               scale: [1.2, 1, 1.2],
               x: [0, -100, 0],
               y: [0, -50, 0]
             }}
             transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-            className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-emerald-100/50 blur-[120px] rounded-full" 
+            className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-emerald-100/50 blur-[120px] rounded-full"
           />
         </div>
 
         <Navbar />
-        
+
         <AnimatePresence mode="wait">
           <Routes>
             <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
             <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
             <Route path="/services" element={<PageWrapper><Services /></PageWrapper>} />
             <Route path="/products" element={<PageWrapper><Products /></PageWrapper>} />
-            <Route path="/research" element={<PageWrapper><Research /></PageWrapper>} />
+            {/* <Route path="/research" element={<PageWrapper><Research /></PageWrapper>} /> */}
             <Route path="/care" element={<PageWrapper><PatientCare /></PageWrapper>} />
             <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
           </Routes>
@@ -90,7 +90,7 @@ export default function App() {
                 <li><Link to="/about" className="hover:text-black">About</Link></li>
                 <li><Link to="/services" className="hover:text-black">Services</Link></li>
                 <li><Link to="/products" className="hover:text-black">Products</Link></li>
-                <li><Link to="/research" className="hover:text-black">Research</Link></li>
+                {/* <li><Link to="/research" className="hover:text-black">Research</Link></li> */}
                 <li><Link to="/care" className="hover:text-black">Patient Care</Link></li>
                 <li><Link to="/contact" className="hover:text-black">Contact</Link></li>
               </ul>

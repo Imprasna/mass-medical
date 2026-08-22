@@ -1,61 +1,93 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { SEO } from '../components/SEO';
-import { FlaskConical, ClipboardList, ShieldCheck, HeartHandshake, ArrowRight, CheckCircle2 } from 'lucide-react';
+import {
+  FlaskConical, ClipboardList, Activity,
+  Droplet,
+  Wind,
+  HeartPulse,
+  Bed,
+  Layers,
+  Home,
+  ShieldCheck,
+  Building2,
+  Award,
+  Cylinder, HeartHandshake, ArrowRight
+} from 'lucide-react';
 import { PatientPortalModal } from '../components/PatientPortalModal';
 
 const services = [
   {
     id: '01',
-    title: 'Drug Discovery & Development',
-    icon: FlaskConical,
-    description: 'End-to-end research and development of novel therapeutic compounds.',
-    specs: [
-      'Target identification and validation',
-      'Lead optimization and screening',
-      'Pre-clinical safety assessment',
-      'Pharmacokinetics & Pharmacodynamics'
-    ],
+    title: 'Syringe Pump',
+    icon: Activity,
     image: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=1000'
   },
   {
     id: '02',
-    title: 'Clinical Trial Management',
-    icon: ClipboardList,
-    description: 'Comprehensive oversight of Phase I-IV clinical trials with a focus on data integrity.',
-    specs: [
-      'Global site selection & monitoring',
-      'Patient recruitment & retention',
-      'Electronic Data Capture (EDC)',
-      'Regulatory submission support'
-    ],
-    image: 'https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&q=80&w=1000'
+    title: 'Infusion Pump',
+    icon: Droplet,
+    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=1000'
   },
   {
     id: '03',
-    title: 'Regulatory Consulting',
-    icon: ShieldCheck,
-    description: 'Navigating complex global regulatory landscapes to ensure compliance and market entry.',
-    specs: [
-      'FDA & EMA strategy development',
-      'Quality Management Systems (QMS)',
-      'Post-market surveillance',
-      'Audit readiness & support'
-    ],
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000'
+    title: 'BiPAP Machine',
+    icon: Wind,
+    image: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&q=80&w=1000'
   },
   {
     id: '04',
-    title: 'Patient Support Programs',
-    icon: HeartHandshake,
-    description: 'Personalized assistance programs to improve patient adherence and outcomes.',
-    specs: [
-      'Financial assistance navigation',
-      'Disease education & counseling',
-      'Adherence monitoring tools',
-      '24/7 clinical support line'
-    ],
-    image: 'https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&q=80&w=1000'
+    title: 'Oxygen Concentrator',
+    icon: Wind,
+    image: 'https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?auto=format&fit=crop&q=80&w=1000'
+  },
+  {
+    id: '05',
+    title: 'Ventilator',
+    icon: HeartPulse,
+    image: 'https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&q=80&w=1000'
+  },
+  {
+    id: '06',
+    title: 'Beds',
+    icon: Bed,
+    image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1000'
+  },
+  {
+    id: '07',
+    title: 'Linens (Bedsheets, Pillow Covers, Blankets)',
+    icon: Layers,
+    image: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&q=80&w=1000'
+  },
+  {
+    id: '08',
+    title: 'ICU Setup at Home',
+    icon: Home,
+    image: 'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?auto=format&fit=crop&q=80&w=1000'
+  },
+  {
+    id: '09',
+    title: 'Bulk Masks',
+    icon: ShieldCheck,
+    image: 'https://images.unsplash.com/photo-1584634731339-252c581abfc5?auto=format&fit=crop&q=80&w=1000'
+  },
+  {
+    id: '10',
+    title: 'Complete Hospital Setup',
+    icon: Building2,
+    image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&q=80&w=1000'
+  },
+  {
+    id: '11',
+    title: 'NABH Accreditation Consultancy',
+    icon: Award,
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1000'
+  },
+  {
+    id: '12',
+    title: 'Oxygen Cylinders',
+    icon: Cylinder,
+    image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=1000'
   }
 ];
 
@@ -64,35 +96,35 @@ export const Services = () => {
 
   return (
     <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto space-y-24">
-      <SEO 
-        title="Our Services" 
-        description="Comprehensive Pharma Solutions including drug discovery, clinical trials, global regulatory consulting, and patient support." 
+      <SEO
+        title="Our Services"
+        description="Comprehensive Pharma Solutions including drug discovery, clinical trials, global regulatory consulting, and patient support."
       />
       <header className="max-w-3xl space-y-6 text-center md:text-left">
-        <motion.span 
+        <motion.span
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="text-xs font-bold uppercase tracking-[0.3em] text-black/40"
         >
           Our Services
         </motion.span>
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter leading-none"
         >
-          Comprehensive <br className="hidden sm:block" /> Pharma Solutions.
+          Comprehensive <br className="hidden sm:block" /> Medcare Solutions.
         </motion.h1>
       </header>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         className="relative h-[400px] md:h-[500px] rounded-5xl overflow-hidden glass"
       >
-        <img 
-          src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=1600" 
-          alt="Excellence in Every Molecule" 
+        <img
+          src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=1600"
+          alt="Excellence in Every Molecule"
           className="w-full h-full object-cover opacity-70"
           referrerPolicy="no-referrer"
         />
@@ -105,7 +137,7 @@ export const Services = () => {
       </motion.div>
 
       <div className="space-y-8 md:space-y-12">
-        {services.map((service, idx) => (
+        {services?.map((service, idx) => (
           <motion.div
             key={service.id}
             initial={{ opacity: 0, y: 40 }}
@@ -114,37 +146,31 @@ export const Services = () => {
             transition={{ delay: idx * 0.1 }}
             className="glass rounded-5xl overflow-hidden grid lg:grid-cols-2 group"
           >
-            <div className="p-8 md:p-12 lg:p-16 space-y-6 md:space-y-8">
+            {/* Content Side (Drives height) */}
+            <div className="p-8 md:p-12 lg:p-16 space-y-6 md:space-y-8 flex flex-col justify-between items-start">
               <div className="flex items-center gap-6">
-                <div className="w-12 h-12 md:w-16 md:h-16 bg-black text-white rounded-2xl flex items-center justify-center">
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-black text-white rounded-2xl flex items-center justify-center shrink-0">
                   <service.icon className="w-6 h-6 md:w-8 md:h-8" />
                 </div>
                 <span className="font-display text-3xl md:text-4xl font-bold text-black/10">{service.id}</span>
               </div>
-              <div className="space-y-4">
-                <h2 className="text-3xl md:text-4xl font-display font-bold tracking-tighter">{service.title}</h2>
-                <p className="text-black/60 text-base md:text-lg leading-relaxed">{service.description}</p>
-              </div>
-              <div className="grid sm:grid-cols-2 gap-4">
-                {service.specs.map((spec) => (
-                  <div key={spec} className="flex items-center gap-2 text-xs md:text-sm font-medium text-black/80">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                    {spec}
-                  </div>
-                ))}
-              </div>
-              <button 
+
+              <h2 className="text-3xl md:text-4xl font-display font-bold tracking-tighter">{service.title}</h2>
+
+              <button
                 onClick={() => setIsPortalOpen(true)}
                 className="w-full sm:w-auto bg-black text-white px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 group/btn hover:scale-105 transition-transform"
               >
                 Consultation <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
               </button>
             </div>
-            <div className="relative h-[400px] lg:h-auto overflow-hidden">
-              <img 
-                src={service.image} 
-                alt={service.title} 
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
+
+            {/* Image Side (Matches content height) */}
+            <div className="relative min-h-[250px] lg:min-h-0 lg:h-full overflow-hidden">
+              <img
+                src={service.image}
+                alt={service.title}
+                className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -161,18 +187,19 @@ export const Services = () => {
               <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tighter">Uncompromising Quality</h2>
             </div>
             <p className="text-base md:text-lg text-black/60 leading-relaxed">
-              Every process, from initial research to final distribution, is governed by the highest international quality standards. Our facilities are ISO 9001 and GMP certified, ensuring safety and efficacy at every stage.
+              Every product and equipment solution we supply undergoes strict quality assurance to ensure flawless clinical performance. We source exclusively from certified manufacturers to deliver reliable, hospital-grade inventory that meets rigorous healthcare regulatory standards and keeps your medical operations running smoothly.
             </p>
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-              <div className="glass px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest">ISO 9001</div>
-              <div className="glass px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest">GMP Certified</div>
-              <div className="glass px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest">FDA Compliant</div>
+              <div className="glass px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest">ISO 13485</div>
+              <div className="glass px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest">CE Certified</div>
+              <div className="glass px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest">CDSCO Approved</div>
+              <div className="glass px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest">Quality Assured</div>
             </div>
           </div>
           <div className="aspect-video rounded-4xl overflow-hidden shadow-2xl">
-            <img 
-              src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&q=80&w=1000" 
-              alt="Uncompromising Quality Control" 
+            <img
+              src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&q=80&w=1000"
+              alt="Uncompromising Quality Control"
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
             />
@@ -182,7 +209,7 @@ export const Services = () => {
       </section>
 
       {/* Global Impact Section */}
-      <section className="space-y-12">
+      {/* <section className="space-y-12">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
           <div className="space-y-4">
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-black/40">Global Reach</span>
@@ -194,14 +221,14 @@ export const Services = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             className="relative h-[400px] rounded-5xl overflow-hidden glass group"
           >
-            <img 
-              src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&q=80&w=1000" 
-              alt="Global Logistics" 
+            <img
+              src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&q=80&w=1000"
+              alt="Global Logistics"
               className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
               referrerPolicy="no-referrer"
             />
@@ -213,15 +240,15 @@ export const Services = () => {
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1 }}
             className="relative h-[400px] rounded-5xl overflow-hidden glass group"
           >
-            <img 
-              src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1000" 
-              alt="Strategic Partnerships" 
+            <img
+              src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1000"
+              alt="Strategic Partnerships"
               className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
               referrerPolicy="no-referrer"
             />
@@ -233,11 +260,11 @@ export const Services = () => {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
-      <PatientPortalModal 
-        isOpen={isPortalOpen} 
-        onClose={() => setIsPortalOpen(false)} 
+      <PatientPortalModal
+        isOpen={isPortalOpen}
+        onClose={() => setIsPortalOpen(false)}
       />
     </div>
   );

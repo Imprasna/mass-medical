@@ -25,17 +25,17 @@ export const Home = () => {
           className="space-y-6 md:space-y-8 text-center lg:text-left"
         >
           <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9] text-gradient">
-            Pioneering <br className="hidden sm:block" /> Human <br className="hidden sm:block" /> Potential.
+            Premium Supplies <br className="hidden sm:block" /> for Hospitals.
           </h1>
           <p className="text-lg md:text-xl text-black/60 max-w-md mx-auto lg:mx-0 leading-relaxed">
-            We merge advanced molecular science with empathetic care to redefine the boundaries of modern medicine.
+            Trusted by leading healthcare networks for reliable, medical-grade materials, rapid fulfillment, and uncompromising ISO-compliant quality standards.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <button
-              onClick={() => navigate('/research')}
+              onClick={() => navigate('/Services')}
               className="bg-black text-white px-8 py-4 rounded-4xl font-medium flex items-center justify-center gap-2 group"
             >
-              Our Research <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              Explore Machinery <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </button>
             <button
               onClick={() => navigate('/care')}
@@ -111,6 +111,58 @@ export const Home = () => {
         </motion.div>
       </div>
 
+      {/* Clinical Trials List */}
+      <section className="space-y-12">
+        <h2 className="font-display text-5xl font-bold tracking-tighter">Supplies & Services Ecosystem</h2>
+        <div className="space-y-4">
+          {[
+            { id: '01', title: 'Syringe Pump', phase: '', status: 'Products' },
+            { id: '02', title: 'Infusion Pump', phase: '', status: 'Products' },
+            { id: '03', title: 'BiPAP Machine', phase: '', status: 'Products' },
+            { id: '04', title: 'Oxygen Concentrator', phase: '', status: 'Products' },
+            { id: '05', title: 'Ventilator', phase: '', status: 'Products' },
+            { id: '06', title: 'Beds', phase: '', status: 'Products' },
+            { id: '07', title: 'Linens (Bedsheets, Pillow Covers, Blankets)', phase: '', status: 'Products' },
+            { id: '08', title: 'ICU Setup at Home', phase: '', status: 'Products' },
+            { id: '09', title: 'Bulk Masks', phase: '', status: 'Products' },
+            { id: '10', title: 'Complete Hospital Setup', phase: '', status: 'Products' },
+            { id: '11', title: 'NABH', phase: '', status: 'Services' },
+            { id: '12', title: 'Oxygen Cylinders', phase: '', status: 'Products' },
+          ].map((trial, idx) => (
+            <motion.div
+              key={trial.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.1 }}
+              className="group flex items-center justify-between p-8 rounded-4xl hover:bg-white transition-colors border-b border-black/5 last:border-0"
+            >
+              <div className="flex items-center gap-12">
+                <span className="font-display text-2xl font-bold text-black/20">{trial.id}</span>
+                <div>
+                  <h4 className="text-xl font-bold">{trial.title}</h4>
+                  <p className="text-sm text-black/40">{trial.phase}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-8">
+                <span className={cn(
+                  "px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest",
+                  trial.status === 'Products' ? "bg-emerald-100 text-emerald-700" :
+                    trial.status === 'Services' ? "bg-blue-100 text-blue-700" : "bg-gray-100 text-gray-700"
+                )}>
+                  {trial.status}
+                </span>
+                <button
+                  onClick={() => alert(`Opening details for ${trial.title}...`)}
+                  className="glass px-6 py-2 rounded-full text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black hover:text-white"
+                >
+
+                </button>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
       {/* Science & R&D Bento Grid */}
       <section className="space-y-12">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
@@ -137,8 +189,8 @@ export const Home = () => {
             />
             <div className="space-y-4 relative z-10">
               <Beaker className="w-12 h-12 text-blue-500" />
-              <h3 className="text-3xl font-display font-bold">Genomic <br /> Sequencing</h3>
-              <p className="text-black/60 max-w-xs">Mapping the future of personalized medicine through advanced DNA analysis.</p>
+              <h3 className="text-3xl font-display font-bold">Clinical <br /> Consumables</h3>
+              <p className="text-black/60 max-w-xs">High-demand, sterile medical supplies certified for daily operating room and ward use.</p>
             </div>
             <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-500/10 blur-3xl rounded-full -mr-20 -mb-20 group-hover:scale-150 transition-transform duration-700" />
             <ArrowUpRight className="absolute top-10 right-10 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -153,8 +205,8 @@ export const Home = () => {
               <Heart className="w-10 h-10 text-emerald-500" />
             </div>
             <div className="space-y-2">
-              <h3 className="text-xl font-display font-bold">Cardiovascular Health</h3>
-              <p className="text-sm text-black/60">Next-gen heart health monitoring and treatment.</p>
+              <h3 className="text-xl font-display font-bold">Critical Care Equipment & Materials</h3>
+              <p className="text-sm text-black/60">Dependable, medical-grade hardware and diagnostic essentials for intensive care and emergency units.</p>
             </div>
           </motion.div>
 
@@ -164,8 +216,8 @@ export const Home = () => {
             className="glass rounded-4xl p-8 flex flex-col justify-center items-center text-center space-y-4 group cursor-pointer"
           >
             <Globe className="w-8 h-8 text-purple-500" />
-            <h3 className="font-display font-bold">Global Reach</h3>
-            <p className="text-xs text-black/40">Serving 40+ countries worldwide.</p>
+            <h3 className="font-display font-bold">Domestic Reach</h3>
+            <p className="text-xs text-black/40">Serving 40+ states in India.</p>
           </motion.div>
 
           <motion.div
@@ -174,8 +226,8 @@ export const Home = () => {
             className="glass-dark rounded-4xl p-8 flex flex-col justify-center items-center text-center space-y-4 group cursor-pointer text-white"
           >
             <Zap className="w-8 h-8 text-yellow-400" />
-            <h3 className="font-display font-bold">Rapid Response</h3>
-            <p className="text-xs text-white/40">Accelerated trial protocols.</p>
+            <h3 className="font-display font-bold">ISO Certified Quality</h3>
+            <p className="text-xs text-white/40">100% compliant, fully traceable medical inventory safety standards.</p>
           </motion.div>
         </div>
       </section>
@@ -183,48 +235,7 @@ export const Home = () => {
       {/* Testimonials Section */}
       <Testimonials />
 
-      {/* Clinical Trials List */}
-      <section className="space-y-12">
-        <h2 className="font-display text-5xl font-bold tracking-tighter">Clinical Trials</h2>
-        <div className="space-y-4">
-          {[
-            { id: '01', title: 'Neuro-Regen Protocol', phase: 'Phase III', status: 'Recruiting' },
-            { id: '02', title: 'Onco-Shield Therapy', phase: 'Phase II', status: 'Active' },
-            { id: '03', title: 'Cardio-Sync V2', phase: 'Phase IV', status: 'Completed' },
-          ].map((trial, idx) => (
-            <motion.div
-              key={trial.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
-              className="group flex items-center justify-between p-8 rounded-4xl hover:bg-white transition-colors border-b border-black/5 last:border-0"
-            >
-              <div className="flex items-center gap-12">
-                <span className="font-display text-2xl font-bold text-black/20">{trial.id}</span>
-                <div>
-                  <h4 className="text-xl font-bold">{trial.title}</h4>
-                  <p className="text-sm text-black/40">{trial.phase}</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-8">
-                <span className={cn(
-                  "px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest",
-                  trial.status === 'Recruiting' ? "bg-emerald-100 text-emerald-700" :
-                    trial.status === 'Active' ? "bg-blue-100 text-blue-700" : "bg-gray-100 text-gray-700"
-                )}>
-                  {trial.status}
-                </span>
-                <button
-                  onClick={() => alert(`Opening details for ${trial.title}...`)}
-                  className="glass px-6 py-2 rounded-full text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black hover:text-white"
-                >
-                  Read More
-                </button>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+
     </div>
   );
 };
