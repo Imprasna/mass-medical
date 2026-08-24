@@ -10,22 +10,73 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-[#F5F5F7] text-[#1D1D1F] antialiased overflow-x-hidden;
+  }
+
+  /* Ensure all links, buttons, and clickable elements have pointer (finger) cursor */
+  a,
+  a[href],
+  button,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  input[type="checkbox"],
+  input[type="radio"],
+  select,
+  summary,
+  [tabindex]:not([tabindex="-1"]) {
+    cursor: pointer;
+  }
+
+  /* Universal high-contrast focus-visible ring for keyboard accessibility */
+  :focus-visible {
+    outline: 2px solid #10b981;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  button:focus-visible,
+  a:focus-visible {
+    outline: 2px solid #10b981;
+    outline-offset: 2px;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-white/40 backdrop-blur-xl border border-white/20 shadow-xl;
+    @apply bg-white/80 backdrop-blur-xl border border-slate-300/80 shadow-lg shadow-black/[0.03] transition-all duration-300;
   }
 
   .glass-dark {
-    @apply bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl;
+    @apply bg-black/80 backdrop-blur-xl border border-white/20 shadow-2xl;
+  }
+
+  .bento-box {
+    @apply bg-white/90 backdrop-blur-xl border-2 border-slate-200 hover:border-slate-400/80 shadow-md shadow-black/[0.02] transition-all duration-300;
   }
 
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-br from-gray-900 to-gray-500;
+  }
+
+  /* Scroll Snap Container and Section utilities */
+  .snap-y-proximity {
+    scroll-snap-type: y proximity;
+  }
+
+  .snap-y-mandatory {
+    scroll-snap-type: y mandatory;
+  }
+
+  .snap-section {
+    scroll-snap-align: start;
+    scroll-margin-top: 6.5rem;
   }
 }
 
@@ -60,9 +111,4 @@
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
-}
-
-html,
-body {
-  overflow-x: hidden;
 }

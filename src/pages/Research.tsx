@@ -8,7 +8,7 @@ export const Research = () => {
     <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto space-y-20">
       <SEO
         title="Our Research"
-        description="Decoding the future of biology. Explore PharmaNext's innovative research in cellular analysis and targeted therapies."
+        description="Decoding the future of biology. Explore MASS MedCare's innovative research in cellular analysis and targeted therapies."
       />
       <header className="max-w-3xl space-y-6 text-center md:text-left">
         <motion.span

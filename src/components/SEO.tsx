@@ -8,8 +8,8 @@ interface SEOProps {
 }
 
 export const SEO: React.FC<SEOProps> = ({ title, description, keywords }) => {
-  const siteTitle = `${title} | PharmaNext`;
-  const defaultKeywords = "pharmaceutical, healthcare, innovation, medicine, biotech, PharmaNext";
+  const siteTitle = `${title} | MASS MEDCARE`;
+  const defaultKeywords = "pharmaceutical, healthcare, innovation, medicine, biotech, MASS MedCare";
 
   return (
     <Helmet>

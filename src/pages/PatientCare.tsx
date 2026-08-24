@@ -11,7 +11,7 @@ export const PatientCare = () => {
     <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto space-y-16 md:space-y-20">
       <SEO
         title="Patient Care"
-        description="Care that understands you. PharmaNext offers comprehensive support programs and personalized medical care."
+        description="Care that understands you. MASS MedCare offers comprehensive support programs and personalized medical care."
       />
       <header className="max-w-3xl space-y-6 text-center md:text-left">
         <motion.span

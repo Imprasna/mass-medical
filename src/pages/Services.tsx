@@ -15,79 +15,93 @@ import {
   Cylinder, HeartHandshake, ArrowRight
 } from 'lucide-react';
 import { PatientPortalModal } from '../components/PatientPortalModal';
+import syringePumpImg from '../assets/images/syringe_pump.png';
+import infusionPumpImg from '../assets/images/Infusion_Pump.png';
+import BiPAPMachineImg from '../assets/images/BiPAP_Machine.png';
+import oxygenConcentratorImg from '../assets/images/oc.png';
+import ventilatorImg from '../assets/images/ventilator.png';
+import bedImg from '../assets/images/beds.png';
+import linenImg from '../assets/images/lenins.png';
+import icuSetupImg from '../assets/images/ICU_setup.png';
+import maskImg from '../assets/images/masks.png';
+import hospitalSetupImg from '../assets/images/hospital_setup.png';
+import nabhImg from '../assets/images/nabh.png';
+import oxygenCylinderImg from '../assets/images/o2cylinders.png';
+import servicesImg from '../assets/images/services.png';
+import UncompromisingQualityImg from '../assets/images/uncompromisingQuality.png';
 
 const services = [
   {
     id: '01',
     title: 'Syringe Pump',
     icon: Activity,
-    image: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=1000'
+    image: syringePumpImg
   },
   {
     id: '02',
     title: 'Infusion Pump',
     icon: Droplet,
-    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=1000'
+    image: infusionPumpImg
   },
   {
     id: '03',
     title: 'BiPAP Machine',
     icon: Wind,
-    image: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&q=80&w=1000'
+    image: BiPAPMachineImg
   },
   {
     id: '04',
     title: 'Oxygen Concentrator',
     icon: Wind,
-    image: 'https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?auto=format&fit=crop&q=80&w=1000'
+    image: oxygenConcentratorImg
   },
   {
     id: '05',
     title: 'Ventilator',
     icon: HeartPulse,
-    image: 'https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&q=80&w=1000'
+    image: ventilatorImg
   },
   {
     id: '06',
     title: 'Beds',
     icon: Bed,
-    image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1000'
+    image: bedImg
   },
   {
     id: '07',
     title: 'Linens (Bedsheets, Pillow Covers, Blankets)',
     icon: Layers,
-    image: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&q=80&w=1000'
+    image: linenImg
   },
   {
     id: '08',
     title: 'ICU Setup at Home',
     icon: Home,
-    image: 'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?auto=format&fit=crop&q=80&w=1000'
+    image: icuSetupImg
   },
   {
     id: '09',
     title: 'Bulk Masks',
     icon: ShieldCheck,
-    image: 'https://images.unsplash.com/photo-1584634731339-252c581abfc5?auto=format&fit=crop&q=80&w=1000'
+    image: maskImg
   },
   {
     id: '10',
     title: 'Complete Hospital Setup',
     icon: Building2,
-    image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&q=80&w=1000'
+    image: hospitalSetupImg
   },
   {
     id: '11',
     title: 'NABH Accreditation Consultancy',
     icon: Award,
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1000'
+    image: nabhImg
   },
   {
     id: '12',
     title: 'Oxygen Cylinders',
     icon: Cylinder,
-    image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=1000'
+    image: oxygenCylinderImg
   }
 ];
 
@@ -123,7 +137,7 @@ export const Services = () => {
         className="relative h-[400px] md:h-[500px] rounded-5xl overflow-hidden glass"
       >
         <img
-          src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=1600"
+          src={servicesImg}
           alt="Excellence in Every Molecule"
           className="w-full h-full object-cover opacity-70"
           referrerPolicy="no-referrer"
@@ -198,7 +212,7 @@ export const Services = () => {
           </div>
           <div className="aspect-video rounded-4xl overflow-hidden shadow-2xl">
             <img
-              src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&q=80&w=1000"
+              src={UncompromisingQualityImg}
               alt="Uncompromising Quality Control"
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"

@@ -17,7 +17,7 @@ const testimonials = [
     id: 2,
     name: "James Wilson",
     role: "Patient",
-    content: "After years of searching for answers, the personalized treatment plan here changed my life. I'm finally back to my active self.",
+    content: "After years of searching for answers, the treatment plan here changed my life.",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400",
     size: "small", // 1x1
     color: "emerald"
@@ -74,7 +74,11 @@ export const Testimonials = () => {
             transition={{ delay: idx * 0.1, duration: 0.6 }}
             whileHover={{ y: -5 }}
             className={cn(
-              "glass rounded-4xl p-8 md:p-10 flex flex-col justify-between group relative overflow-hidden min-h-[320px] md:min-h-0",
+              "bg-white/85 backdrop-blur-xl border-2 rounded-5xl p-8 md:p-10 flex flex-col justify-between group relative overflow-hidden min-h-[320px] md:min-h-0 shadow-md shadow-black/[0.02] transition-all duration-300",
+              testimonial.color === 'blue' ? "border-blue-200/90 hover:border-blue-400" :
+                testimonial.color === 'emerald' ? "border-emerald-200/90 hover:border-emerald-400" :
+                  testimonial.color === 'purple' ? "border-purple-200/90 hover:border-purple-400" :
+                    testimonial.color === 'amber' ? "border-amber-200/90 hover:border-amber-400" : "border-rose-200/90 hover:border-rose-400",
               testimonial.size === 'large' ? "md:col-span-2 md:row-span-2" : "",
               testimonial.size === 'wide' ? "md:col-span-2" : "",
               testimonial.size === 'small' ? "md:col-span-1" : ""
@@ -84,9 +88,9 @@ export const Testimonials = () => {
             <div className={cn(
               "absolute -right-10 -top-10 w-40 h-40 blur-3xl opacity-10 group-hover:opacity-20 transition-opacity rounded-full",
               testimonial.color === 'blue' ? "bg-blue-500" :
-              testimonial.color === 'emerald' ? "bg-emerald-500" :
-              testimonial.color === 'purple' ? "bg-purple-500" :
-              testimonial.color === 'amber' ? "bg-amber-500" : "bg-rose-500"
+                testimonial.color === 'emerald' ? "bg-emerald-500" :
+                  testimonial.color === 'purple' ? "bg-purple-500" :
+                    testimonial.color === 'amber' ? "bg-amber-500" : "bg-rose-500"
             )} />
 
             <div className="space-y-6 relative z-10">
@@ -95,9 +99,9 @@ export const Testimonials = () => {
                   <Quote className={cn(
                     "w-6 h-6",
                     testimonial.color === 'blue' ? "text-blue-500" :
-                    testimonial.color === 'emerald' ? "text-emerald-500" :
-                    testimonial.color === 'purple' ? "text-purple-500" :
-                    testimonial.color === 'amber' ? "text-amber-500" : "text-rose-500"
+                      testimonial.color === 'emerald' ? "text-emerald-500" :
+                        testimonial.color === 'purple' ? "text-purple-500" :
+                          testimonial.color === 'amber' ? "text-amber-500" : "text-rose-500"
                   )} />
                 </div>
                 <div className="flex gap-1">
@@ -116,9 +120,9 @@ export const Testimonials = () => {
             </div>
 
             <div className="flex items-center gap-4 relative z-10 mt-6">
-              <img 
-                src={testimonial.image} 
-                alt={testimonial.name} 
+              <img
+                src={testimonial.image}
+                alt={testimonial.name}
                 className="w-12 h-12 rounded-2xl object-cover border-2 border-white/50"
                 referrerPolicy="no-referrer"
               />

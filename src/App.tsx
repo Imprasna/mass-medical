@@ -11,14 +11,25 @@ import { Products } from './pages/Products';
 import { PatientCare } from './pages/PatientCare';
 import { Contact } from './pages/Contact';
 import { NewsletterForm } from './components/NewsletterForm';
+import { Footer } from './components/Footer';
+import { ScrollToTopButton } from './components/ScrollToTopButton';
 
-const ScrollToTop = () => {
+// const ScrollToTop = () => {
+//   const { pathname } = useLocation();
+//   useEffect(() => {
+//     window.scrollTo(0, 0);
+//   }, [pathname]);
+//   return null;
+// };
+
+const RouteScrollReset = () => {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
   return null;
 };
+
 
 const PageWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -36,7 +47,8 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => {
 export default function App() {
   return (
     <Router>
-      <ScrollToTop />
+      <RouteScrollReset />
+      {/* <ScrollToTop /> */}
       <Preloader />
       <div className="min-h-screen relative">
         {/* Dynamic Background Gradients */}
@@ -75,41 +87,8 @@ export default function App() {
           </Routes>
         </AnimatePresence>
 
-        <footer className="py-20 px-6 border-t border-black/5">
-          <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
-            <div className="space-y-6">
-              <h2 className="font-display font-bold text-2xl tracking-tighter">PHARMANEXT</h2>
-              <p className="text-sm text-black/40 leading-relaxed">
-                Redefining the future of human health through molecular innovation and empathetic care.
-              </p>
-            </div>
-            <div className="space-y-4">
-              <h4 className="font-bold text-sm uppercase tracking-widest">Navigation</h4>
-              <ul className="space-y-2 text-sm text-black/60">
-                <li><Link to="/" className="hover:text-black">Home</Link></li>
-                <li><Link to="/about" className="hover:text-black">About</Link></li>
-                <li><Link to="/services" className="hover:text-black">Services</Link></li>
-                <li><Link to="/products" className="hover:text-black">Products</Link></li>
-                {/* <li><Link to="/research" className="hover:text-black">Research</Link></li> */}
-                <li><Link to="/care" className="hover:text-black">Patient Care</Link></li>
-                <li><Link to="/contact" className="hover:text-black">Contact</Link></li>
-              </ul>
-            </div>
-            <div className="space-y-4">
-              <h4 className="font-bold text-sm uppercase tracking-widest">Legal</h4>
-              <ul className="space-y-2 text-sm text-black/60">
-                <li><a href="#" className="hover:text-black">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-black">Terms of Service</a></li>
-                <li><a href="#" className="hover:text-black">Cookie Policy</a></li>
-              </ul>
-            </div>
-            <NewsletterForm />
-          </div>
-          <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-black/5 flex justify-between items-center text-xs text-black/20 font-bold tracking-widest uppercase">
-            <span>© 2026 PHARMANEXT INC.</span>
-            <span>SAN FRANCISCO, CA</span>
-          </div>
-        </footer>
+        <Footer />
+        <ScrollToTopButton />
       </div>
     </Router>
   );
