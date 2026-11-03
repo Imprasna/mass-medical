@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
@@ -5,12 +6,10 @@ import {
   Wind,
   HeartPulse,
   Zap,
-  Info,
   X,
   CheckCircle2,
   ShieldCheck,
   ArrowRight,
-  FileText,
   Send,
   Phone,
   User,
@@ -18,10 +17,10 @@ import {
   Building2,
   Sparkles,
   Layers,
-  ChevronRight,
-  Filter
+  Filter,
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+
 import syringePumpImg from '../assets/images/syringe_pump.png';
 import infusionPumpImg from '../assets/images/Infusion_Pump.png';
 import BiPAPMachineImg from '../assets/images/BiPAP_Machine.png';
@@ -38,10 +37,7 @@ export interface ProductItem {
   icon: React.ElementType;
   image: string;
   description: string;
-  specs: {
-    label: string;
-    value: string;
-  }[];
+  specs: { label: string; value: string }[];
   benefits: string[];
   footnote?: string;
 }
@@ -52,180 +48,274 @@ const products: ProductItem[] = [
     name: 'Syringe Pump',
     category: 'INFUSION & SYRINGE THERAPY',
     filterCategory: 'Infusion Therapy',
-    tagline: 'Accurate and controlled medication delivery for critical care, hospitals, and clinical settings.',
+    tagline:
+      'Accurate and controlled medication delivery for critical care, hospitals, and clinical settings.',
     icon: Zap,
     image: syringePumpImg,
-    description: 'A precision infusion device designed to deliver medications and fluids accurately and consistently through a syringe. Suitable for critical care, anesthesia, neonatal, and general clinical applications.',
+    description:
+      'A precision infusion device designed to deliver medications and fluids accurately and consistently through a syringe. Suitable for critical care, anesthesia, neonatal, and general clinical applications.',
     specs: [
       { label: 'Delivery', value: 'Programmable syringe-based infusion' },
       { label: 'Flow Rate', value: 'Model-dependent' },
       { label: 'Syringe Compatibility', value: 'Multiple standard syringe sizes' },
-      { label: 'Operation', value: 'Continuous / programmable infusion' }
+      { label: 'Operation', value: 'Continuous / programmable infusion' },
     ],
     benefits: [
       'High-precision fluid delivery',
       'Programmable infusion rates',
       'Clear and intuitive operation',
-      'Suitable for critical-care applications'
-    ]
+      'Suitable for critical-care applications',
+    ],
   },
   {
     id: 'prod-infusion-pump',
     name: 'Infusion Pump',
     category: 'INFUSION THERAPY',
     filterCategory: 'Infusion Therapy',
-    tagline: 'Reliable and precise fluid and medication infusion designed for safe and efficient patient care.',
+    tagline:
+      'Reliable and precise fluid and medication infusion designed for safe and efficient patient care.',
     icon: Activity,
     image: infusionPumpImg,
-    description: 'A reliable volumetric infusion system designed to deliver fluids, medications, and nutritional solutions at controlled rates. Built for consistent performance across hospital and clinical environments.',
+    description:
+      'A reliable volumetric infusion system designed to deliver fluids, medications, and nutritional solutions at controlled rates. Built for consistent performance across hospital and clinical environments.',
     specs: [
       { label: 'Infusion Type', value: 'Volumetric / controlled infusion' },
       { label: 'Flow Rate', value: 'Model-dependent' },
       { label: 'Display', value: 'Digital monitoring interface' },
-      { label: 'Safety', value: 'Occlusion and air-in-line detection*' }
+      { label: 'Safety', value: 'Occlusion and air-in-line detection*' },
     ],
     benefits: [
       'Controlled and consistent infusion',
       'Accurate flow-rate management',
       'Integrated safety monitoring',
-      'Designed for continuous clinical use'
+      'Designed for continuous clinical use',
     ],
-    footnote: '*Exact safety features vary by model.'
+    footnote: '*Exact safety features vary by model.',
   },
   {
     id: 'prod-patient-monitor',
     name: 'Patient Monitor',
     category: 'PATIENT MONITORING',
     filterCategory: 'Patient Monitoring',
-    tagline: 'Real-time monitoring of vital parameters to support informed clinical decisions and patient care.',
+    tagline:
+      'Real-time monitoring of vital parameters to support informed clinical decisions and patient care.',
     icon: HeartPulse,
     image: patientmoniterImg,
-    description: 'A comprehensive bedside monitoring system designed to provide continuous visibility of essential patient vital signs. Ideal for hospitals, ICUs, emergency departments, and critical-care environments.',
+    description:
+      'A comprehensive bedside monitoring system designed to provide continuous visibility of essential patient vital signs. Ideal for hospitals, ICUs, emergency departments, and critical-care environments.',
     specs: [
       { label: 'Parameters', value: 'ECG, SpO₂, NIBP, Temperature*' },
       { label: 'Display', value: 'High-resolution color display' },
       { label: 'Monitoring', value: 'Real-time vital-sign monitoring' },
-      { label: 'Alarm System', value: 'Visual and audible patient alarms' }
+      { label: 'Alarm System', value: 'Visual and audible patient alarms' },
     ],
     benefits: [
       'Continuous vital-sign monitoring',
       'Clear real-time patient data',
       'Configurable monitoring parameters',
-      'Designed for critical-care environments'
+      'Designed for critical-care environments',
     ],
-    footnote: '*Additional parameters such as RESP, EtCO₂ and IBP are available depending on model.'
+    footnote:
+      '*Additional parameters such as RESP, EtCO₂ and IBP are available depending on model.',
   },
   {
     id: 'prod-ventilator',
     name: 'Ventilator',
     category: 'CRITICAL CARE & RESPIRATORY SUPPORT',
     filterCategory: 'Respiratory Care',
-    tagline: 'Reliable respiratory support with controlled ventilation for critical and intensive care environments.',
+    tagline:
+      'Reliable respiratory support with controlled ventilation for critical and intensive care environments.',
     icon: Wind,
     image: ventilatorImg,
-    description: 'An advanced mechanical ventilation system designed to provide controlled respiratory support for patients requiring assisted or invasive ventilation. Suitable for ICU and critical-care applications.',
+    description:
+      'An advanced mechanical ventilation system designed to provide controlled respiratory support for patients requiring assisted or invasive ventilation. Suitable for ICU and critical-care applications.',
     specs: [
       { label: 'Ventilation', value: 'Invasive / assisted ventilation*' },
       { label: 'Modes', value: 'Multiple configurable ventilation modes' },
       { label: 'Monitoring', value: 'Real-time respiratory parameters' },
-      { label: 'Safety', value: 'Integrated alarms and monitoring systems' }
+      { label: 'Safety', value: 'Integrated alarms and monitoring systems' },
     ],
     benefits: [
       'Precise respiratory support',
       'Multiple ventilation modes',
       'Continuous respiratory monitoring',
-      'Comprehensive alarm management'
+      'Comprehensive alarm management',
     ],
-    footnote: '*Ventilation modes and capabilities vary by model.'
+    footnote: '*Ventilation modes and capabilities vary by model.',
   },
   {
     id: 'prod-bipap',
     name: 'BiPAP Machine',
     category: 'NON-INVASIVE RESPIRATORY SUPPORT',
     filterCategory: 'Respiratory Care',
-    tagline: 'Non-invasive respiratory support designed to assist breathing and deliver comfortable, controlled therapy.',
+    tagline:
+      'Non-invasive respiratory support designed to assist breathing and deliver comfortable, controlled therapy.',
     icon: Wind,
     image: BiPAPMachineImg,
-    description: 'A non-invasive respiratory support system that delivers two levels of positive airway pressure to assist breathing. Designed for patients requiring respiratory support without invasive ventilation.',
+    description:
+      'A non-invasive respiratory support system that delivers two levels of positive airway pressure to assist breathing. Designed for patients requiring respiratory support without invasive ventilation.',
     specs: [
       { label: 'Therapy', value: 'Bi-level Positive Airway Pressure' },
       { label: 'Pressure', value: 'Independently adjustable IPAP & EPAP*' },
       { label: 'Interface', value: 'Compatible with appropriate patient masks' },
-      { label: 'Monitoring', value: 'Therapy and respiratory monitoring*' }
+      { label: 'Monitoring', value: 'Therapy and respiratory monitoring*' },
     ],
     benefits: [
       'Non-invasive respiratory support',
       'Adjustable dual-pressure therapy',
       'Comfortable assisted breathing',
-      'Suitable for clinical and home-care applications'
+      'Suitable for clinical and home-care applications',
     ],
-    footnote: '*Pressure range and monitoring features vary by model.'
+    footnote: '*Pressure range and monitoring features vary by model.',
   },
   {
     id: 'prod-cpap',
     name: 'CPAP Machine',
     category: 'SLEEP & RESPIRATORY THERAPY',
     filterCategory: 'Sleep Therapy',
-    tagline: 'Consistent positive airway pressure support designed to help maintain clear airways during sleep.',
+    tagline:
+      'Consistent positive airway pressure support designed to help maintain clear airways during sleep.',
     icon: Wind,
     image: cpapImg,
-    description: 'A continuous positive airway pressure system designed to provide a steady flow of pressurized air through a mask to help maintain airway patency during sleep. Commonly used for sleep-related breathing disorders.',
+    description:
+      'A continuous positive airway pressure system designed to provide a steady flow of pressurized air through a mask to help maintain airway patency during sleep. Commonly used for sleep-related breathing disorders.',
     specs: [
       { label: 'Therapy', value: 'Continuous Positive Airway Pressure' },
       { label: 'Pressure', value: 'Adjustable therapeutic pressure*' },
       { label: 'Interface', value: 'Compatible CPAP mask system' },
-      { label: 'Operation', value: 'Continuous airflow delivery' }
+      { label: 'Operation', value: 'Continuous airflow delivery' },
     ],
     benefits: [
       'Consistent positive airway pressure',
       'Supports unobstructed airflow',
       'Designed for comfortable overnight use',
-      'Suitable for home and clinical applications'
+      'Suitable for home and clinical applications',
     ],
-    footnote: '*Pressure range and comfort features vary by model.'
-  }
+    footnote: '*Pressure range and comfort features vary by model.',
+  },
 ];
 
 export const Products = () => {
-  const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
-  const [requestSubmitted, setRequestSubmitted] = useState(false);
+  const [selectedProduct, setSelectedProduct] =
+    useState<ProductItem | null>(null);
+
+  const [selectedCategory, setSelectedCategory] =
+    useState('All');
+
+  const [requestSubmitted, setRequestSubmitted] =
+    useState(false);
+
   const [requestName, setRequestName] = useState('');
   const [requestPhone, setRequestPhone] = useState('');
   const [requestEmail, setRequestEmail] = useState('');
   const [requestClinic, setRequestClinic] = useState('');
+  const [requestAddress, setRequestAddress] = useState('');
+  const [requestQuantity, setRequestQuantity] = useState('1');
+
+  const [requestLoading, setRequestLoading] = useState(false);
+  const [requestError, setRequestError] = useState('');
+
   const navigate = useNavigate();
 
-  const categories = ['All', 'Infusion Therapy', 'Patient Monitoring', 'Respiratory Care', 'Sleep Therapy'];
+  const categories = [
+    'All',
+    'Infusion Therapy',
+    'Patient Monitoring',
+    'Respiratory Care',
+    'Sleep Therapy',
+  ];
 
   const filteredProducts = products.filter(
-    (prod) => selectedCategory === 'All' || prod.filterCategory === selectedCategory
+    (product) =>
+      selectedCategory === 'All' ||
+      product.filterCategory === selectedCategory
   );
 
-  const handleRequestSubmit = (e: React.FormEvent) => {
+  const resetRequestForm = () => {
+    setRequestName('');
+    setRequestPhone('');
+    setRequestEmail('');
+    setRequestClinic('');
+    setRequestAddress('');
+    setRequestQuantity('1');
+    setRequestError('');
+  };
+
+  const closeModal = () => {
+    setSelectedProduct(null);
+    setRequestSubmitted(false);
+    setRequestError('');
+  };
+
+  // PRODUCT REQUEST API
+  const handleRequestSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
     e.preventDefault();
-    if (requestEmail.trim() && requestName.trim()) {
+
+    if (!selectedProduct || requestLoading) return;
+
+    setRequestLoading(true);
+    setRequestError('');
+
+    try {
+      const API_URL = (
+        import.meta.env.VITE_API_URL ||
+        'http://localhost:3001'
+      ).replace(/\/$/, '');
+
+      const response = await fetch(
+        `${API_URL}/api/product-request`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            productId: selectedProduct.id,
+            productName: selectedProduct.name,
+            productCategory: selectedProduct.category,
+            customerName: requestName.trim(),
+            phone: requestPhone.trim(),
+            email: requestEmail.trim(),
+            clinic: requestClinic.trim(),
+            address: requestAddress.trim(),
+            quantity: Number(requestQuantity),
+          }),
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(
+          result.message || 'Unable to submit request.'
+        );
+      }
+
       setRequestSubmitted(true);
-      setTimeout(() => {
-        setRequestSubmitted(false);
-        setRequestName('');
-        setRequestPhone('');
-        setRequestEmail('');
-        setRequestClinic('');
-        setSelectedProduct(null);
-      }, 3000);
+      resetRequestForm();
+    } catch (error) {
+      setRequestError(
+        error instanceof Error
+          ? error.message
+          : 'Unable to submit request. Please try again.'
+      );
+    } finally {
+      setRequestLoading(false);
     }
   };
 
   return (
     <div className="pt-28 sm:pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-16 sm:space-y-20">
 
-      {/* Header Section */}
+      {/* HEADER */}
       <header className="max-w-3xl space-y-4">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold tracking-widest uppercase">
           <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
           Medical Equipment & Infusion Catalog
         </div>
+
         <motion.h1
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -233,43 +323,52 @@ export const Products = () => {
         >
           ICU-Grade Medical Systems.
         </motion.h1>
+
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
           className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl"
         >
-          Reliable infusion systems, multi-parameter vital monitors, and advanced respiratory equipment calibrated for hospitals, clinics, and home-care settings.
+          Reliable infusion systems, multi-parameter vital monitors,
+          and advanced respiratory equipment calibrated for
+          hospitals, clinics, and home-care settings.
         </motion.p>
       </header>
 
-      {/* Category Filter Pills Bar */}
+      {/* CATEGORY FILTER */}
       <div className="flex flex-wrap items-center justify-between gap-4 pb-2 border-b border-slate-200/90">
         <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
           <Filter className="w-4 h-4 text-slate-400 shrink-0 mr-1 hidden sm:inline-block" />
-          {categories.map((cat) => (
+
+          {categories.map((category) => (
             <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
+              key={category}
+              onClick={() => setSelectedCategory(category)}
               type="button"
-              className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 ${selectedCategory === cat
-                ? 'bg-slate-950 text-white shadow-sm'
-                : 'bg-white/80 hover:bg-white text-slate-600 border border-slate-200'
-                }`}
+              className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 ${
+                selectedCategory === category
+                  ? 'bg-slate-950 text-white shadow-sm'
+                  : 'bg-white/80 hover:bg-white text-slate-600 border border-slate-200'
+              }`}
             >
-              {cat}
+              {category}
             </button>
           ))}
         </div>
 
         <div className="text-xs text-slate-500 font-mono">
-          Showing <span className="font-bold text-slate-900">{filteredProducts.length}</span> Equipment Systems
+          Showing{' '}
+          <span className="font-bold text-slate-900">
+            {filteredProducts.length}
+          </span>{' '}
+          Equipment Systems
         </div>
       </div>
 
-      {/* 6 Products Grid */}
+      {/* PRODUCTS GRID */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-        {filteredProducts.map((product, idx) => {
+        {filteredProducts.map((product, index) => {
           const IconComponent = product.icon;
 
           return (
@@ -278,10 +377,9 @@ export const Products = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.08 }}
+              transition={{ delay: index * 0.08 }}
               className="bg-white/90 backdrop-blur-xl border border-slate-200/90 hover:border-emerald-400/80 rounded-4xl overflow-hidden group flex flex-col justify-between shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300"
             >
-              {/* Product Visual Container */}
               <div className="relative h-56 sm:h-60 overflow-hidden bg-slate-100">
                 <img
                   src={product.image}
@@ -289,21 +387,21 @@ export const Products = () => {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
+
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent" />
 
-                {/* Category Badge */}
                 <div className="absolute top-4 left-4">
                   <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[10px] font-mono font-bold tracking-wider uppercase text-slate-800 shadow-xs border border-white/60">
                     {product.category}
                   </span>
                 </div>
 
-                {/* Device Title Overlay */}
                 <div className="absolute bottom-4 left-4 right-4 text-white">
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-lg bg-emerald-500/90 backdrop-blur-sm flex items-center justify-center text-slate-950 shrink-0">
                       <IconComponent className="w-4 h-4" />
                     </div>
+
                     <h3 className="text-xl font-display font-bold tracking-tight text-white leading-tight">
                       {product.name}
                     </h3>
@@ -311,34 +409,40 @@ export const Products = () => {
                 </div>
               </div>
 
-              {/* Card Body & Content */}
               <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-6">
-
                 <div className="space-y-4">
                   <p className="text-sm text-slate-600 leading-relaxed">
                     {product.tagline}
                   </p>
 
-                  {/* 4 Key Specifications Box */}
                   <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2.5">
                     <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500 block">
                       KEY SPECIFICATIONS
                     </span>
+
                     <div className="space-y-1.5 text-xs">
                       {product.specs.slice(0, 3).map((spec) => (
-                        <div key={spec.label} className="flex items-start justify-between gap-2">
-                          <span className="text-slate-500 font-medium">{spec.label}:</span>
-                          <span className="text-slate-900 font-semibold text-right">{spec.value}</span>
+                        <div
+                          key={spec.label}
+                          className="flex items-start justify-between gap-2"
+                        >
+                          <span className="text-slate-500 font-medium">
+                            {spec.label}:
+                          </span>
+
+                          <span className="text-slate-900 font-semibold text-right">
+                            {spec.value}
+                          </span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* 2 Key Benefits Highlights */}
                   <div className="space-y-2">
                     <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500 block">
                       KEY BENEFITS
                     </span>
+
                     <ul className="space-y-1.5 text-xs text-slate-700">
                       {product.benefits.slice(0, 2).map((benefit) => (
                         <li key={benefit} className="flex items-center gap-2">
@@ -350,7 +454,6 @@ export const Products = () => {
                   </div>
                 </div>
 
-                {/* View Specifications Button */}
                 <button
                   onClick={() => setSelectedProduct(product)}
                   type="button"
@@ -360,24 +463,27 @@ export const Products = () => {
                   <span>View Specifications</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                 </button>
-
               </div>
             </motion.div>
           );
         })}
       </div>
 
-      {/* Model-Neutral Technical Note Banner */}
+      {/* PROCUREMENT BANNER */}
       <div className="p-6 rounded-3xl bg-slate-900 text-slate-300 border border-slate-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="space-y-1 max-w-2xl">
           <div className="flex items-center gap-2 text-emerald-400 font-mono text-xs font-bold uppercase tracking-wider">
             <ShieldCheck className="w-4 h-4" />
             Model-Specific Procurement Guidance
           </div>
+
           <p className="text-sm text-slate-300 leading-relaxed">
-            Need exact flow rate curves, battery backup specs, or custom brand-specific quotations (Mindray, B. Braun, ResMed, Philips)? Contact our biomedical procurement desk directly.
+            Need exact flow rate curves, battery backup specs,
+            or custom brand-specific quotations (Mindray, B. Braun,
+            ResMed, Philips)? Contact our biomedical procurement desk directly.
           </p>
         </div>
+
         <button
           onClick={() => navigate('/contact')}
           type="button"
@@ -387,24 +493,19 @@ export const Products = () => {
         </button>
       </div>
 
-      {/* Detailed Specifications Modal (Consistent Field Structure) */}
+      {/* PRODUCT SPECIFICATION MODAL */}
       <AnimatePresence>
         {selectedProduct && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => {
-                setSelectedProduct(null);
-                setRequestSubmitted(false);
-              }}
+              onClick={closeModal}
               className="fixed inset-0 bg-slate-950/70 backdrop-blur-md"
               aria-hidden="true"
             />
 
-            {/* Modal Card */}
             <motion.div
               initial={{ opacity: 0, scale: 0.94, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -415,12 +516,8 @@ export const Products = () => {
               aria-labelledby="modal-product-title"
               className="relative w-full max-w-4xl bg-white rounded-4xl sm:rounded-5xl shadow-2xl border border-slate-200 overflow-hidden z-10 max-h-[90vh] flex flex-col"
             >
-              {/* Close Button */}
               <button
-                onClick={() => {
-                  setSelectedProduct(null);
-                  setRequestSubmitted(false);
-                }}
+                onClick={closeModal}
                 type="button"
                 aria-label="Close product specifications modal"
                 className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 p-2.5 rounded-full bg-white/90 hover:bg-slate-100 text-slate-700 shadow-md border border-slate-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
@@ -429,8 +526,7 @@ export const Products = () => {
               </button>
 
               <div className="grid grid-cols-1 lg:grid-cols-12 overflow-y-auto">
-
-                {/* Left Visual Banner (Col Span 5) */}
+                {/* LEFT VISUAL */}
                 <div className="lg:col-span-5 bg-slate-950 relative min-h-[220px] lg:min-h-full p-8 flex flex-col justify-between overflow-hidden">
                   <img
                     src={selectedProduct.image}
@@ -438,6 +534,7 @@ export const Products = () => {
                     className="absolute inset-0 w-full h-full object-cover opacity-35"
                     referrerPolicy="no-referrer"
                   />
+
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
 
                   <div className="relative z-10 space-y-2">
@@ -447,43 +544,52 @@ export const Products = () => {
                   </div>
 
                   <div className="relative z-10 space-y-2 text-white pt-12">
-                    <h2 id="modal-product-title" className="text-2xl sm:text-3xl font-display font-bold tracking-tight">
+                    <h2
+                      id="modal-product-title"
+                      className="text-2xl sm:text-3xl font-display font-bold tracking-tight"
+                    >
                       {selectedProduct.name}
                     </h2>
+
                     <p className="text-xs text-slate-300 leading-relaxed">
                       {selectedProduct.tagline}
                     </p>
                   </div>
                 </div>
 
-                {/* Right Specification Data (Col Span 7) */}
+                {/* RIGHT SPECIFICATIONS */}
                 <div className="lg:col-span-7 p-6 sm:p-10 space-y-7">
-
-                  {/* Structure: CATEGORY -> PRODUCT NAME -> DESCRIPTION */}
                   <div className="space-y-2">
                     <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-emerald-700">
                       {selectedProduct.category}
                     </span>
+
                     <h3 className="text-2xl sm:text-3xl font-display font-bold tracking-tight text-slate-900">
                       {selectedProduct.name}
                     </h3>
+
                     <p className="text-sm text-slate-600 leading-relaxed pt-1">
                       {selectedProduct.description}
                     </p>
                   </div>
 
-                  {/* 4 KEY SPECIFICATIONS */}
+                  {/* SPECIFICATIONS */}
                   <div className="space-y-3">
                     <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-900 flex items-center gap-2">
                       <Layers className="w-3.5 h-3.5 text-emerald-600" />
                       KEY SPECIFICATIONS
                     </h4>
+
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {selectedProduct.specs.map((spec) => (
-                        <div key={spec.label} className="p-3 rounded-xl bg-slate-50 border border-slate-200/90 space-y-0.5">
+                        <div
+                          key={spec.label}
+                          className="p-3 rounded-xl bg-slate-50 border border-slate-200/90 space-y-0.5"
+                        >
                           <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-slate-500 block">
                             {spec.label}
                           </span>
+
                           <span className="text-xs font-bold text-slate-900 block">
                             {spec.value}
                           </span>
@@ -492,15 +598,19 @@ export const Products = () => {
                     </div>
                   </div>
 
-                  {/* 4 KEY BENEFITS */}
+                  {/* BENEFITS */}
                   <div className="space-y-3">
                     <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-900 flex items-center gap-2">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                       KEY BENEFITS
                     </h4>
+
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {selectedProduct.benefits.map((benefit) => (
-                        <div key={benefit} className="flex items-center gap-2.5 text-xs font-medium text-slate-700">
+                        <div
+                          key={benefit}
+                          className="flex items-center gap-2.5 text-xs font-medium text-slate-700"
+                        >
                           <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                           <span>{benefit}</span>
                         </div>
@@ -508,14 +618,13 @@ export const Products = () => {
                     </div>
                   </div>
 
-                  {/* Footnote if exists */}
                   {selectedProduct.footnote && (
                     <p className="text-[11px] font-mono text-slate-400 italic">
                       {selectedProduct.footnote}
                     </p>
                   )}
 
-                  {/* CTA Section: Request Product Details */}
+                  {/* PRODUCT REQUEST FORM */}
                   <div className="pt-2 border-t border-slate-200/80">
                     {requestSubmitted ? (
                       <motion.div
@@ -525,23 +634,28 @@ export const Products = () => {
                       >
                         <div className="flex items-center justify-center gap-2 text-emerald-800 font-bold text-sm">
                           <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                          Product Details & Quote Dispatched!
+                          Request Submitted Successfully!
                         </div>
+
                         <p className="text-xs text-emerald-700">
-                          Our clinical equipment specialist will send documentation and pricing within 2 hours.
+                          Our biomedical team has received your request
+                          and will contact you.
                         </p>
                       </motion.div>
                     ) : (
-                      <form onSubmit={handleRequestSubmit} className="space-y-3.5">
-                        <div className="space-y-1">
-                          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500 block">
-                            Request Quotation & Specifications
-                          </span>
-                        </div>
+                      <form
+                        onSubmit={handleRequestSubmit}
+                        className="space-y-3.5"
+                      >
+                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500 block">
+                          Request Quotation & Specifications
+                        </span>
+
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                          {/* Customer Name */}
+                          {/* NAME */}
                           <div className="relative">
                             <User className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+
                             <input
                               type="text"
                               required
@@ -553,9 +667,10 @@ export const Products = () => {
                             />
                           </div>
 
-                          {/* Contact Number */}
+                          {/* PHONE */}
                           <div className="relative">
                             <Phone className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+
                             <input
                               type="tel"
                               required
@@ -567,9 +682,10 @@ export const Products = () => {
                             />
                           </div>
 
-                          {/* Email Address */}
+                          {/* EMAIL */}
                           <div className="relative">
                             <Mail className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+
                             <input
                               type="email"
                               required
@@ -581,9 +697,10 @@ export const Products = () => {
                             />
                           </div>
 
-                          {/* Clinic / Hospital Name */}
+                          {/* CLINIC */}
                           <div className="relative">
                             <Building2 className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+
                             <input
                               type="text"
                               required
@@ -594,28 +711,77 @@ export const Products = () => {
                               className="w-full bg-slate-100/90 border border-slate-200 rounded-xl pl-9 pr-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                             />
                           </div>
+
+                          {/* QUANTITY */}
+                          <div className="relative">
+                            <input
+                              type="number"
+                              required
+                              min={1}
+                              max={100000}
+                              step={1}
+                              value={requestQuantity}
+                              onChange={(e) => setRequestQuantity(e.target.value)}
+                              placeholder="Quantity *"
+                              aria-label="Quantity"
+                              className="w-full bg-slate-100/90 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                            />
+                          </div>
+
+                          {/* ADDRESS */}
+                          <div className="relative sm:col-span-2">
+                            <Building2 className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-3" />
+
+                            <textarea
+                              required
+                              rows={3}
+                              value={requestAddress}
+                              onChange={(e) => setRequestAddress(e.target.value)}
+                              placeholder="Full Address *"
+                              aria-label="Full Address"
+                              className="w-full resize-y bg-slate-100/90 border border-slate-200 rounded-xl pl-9 pr-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                            />
+                          </div>
                         </div>
 
+                        {/* ERROR */}
+                        {requestError && (
+                          <p
+                            role="alert"
+                            className="text-xs text-red-600 bg-red-50 border border-red-200 rounded-lg p-3"
+                          >
+                            {requestError}
+                          </p>
+                        )}
+
+                        {/* SUBMIT */}
                         <button
                           type="submit"
+                          disabled={requestLoading}
                           aria-label={`Request product details for ${selectedProduct.name}`}
-                          className="w-full bg-slate-900 hover:bg-emerald-600 text-white py-3.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all duration-200 active:scale-98 shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+                          className="w-full disabled:opacity-60 disabled:cursor-not-allowed bg-slate-900 hover:bg-emerald-600 text-white py-3.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all duration-200 active:scale-98 shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
                         >
-                          <Send className="w-4 h-4" />
-                          <span>Request Product Details</span>
+                          <Send
+                            className={`w-4 h-4 ${
+                              requestLoading ? 'animate-pulse' : ''
+                            }`}
+                          />
+
+                          <span>
+                            {requestLoading
+                              ? 'Sending Request...'
+                              : 'Request Product Details'}
+                          </span>
                         </button>
                       </form>
                     )}
                   </div>
-
                 </div>
-
               </div>
             </motion.div>
           </div>
         )}
       </AnimatePresence>
-
     </div>
   );
 };
