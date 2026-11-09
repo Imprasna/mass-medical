@@ -58,7 +58,7 @@ export const Contact = () => {
     <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto space-y-16 md:space-y-20">
       <SEO
         title="Contact Us"
-        description="Get in touch with MASS MedCare. Let's start a conversation about redefining healthcare."
+        description="Get in touch with MASS Medical. Let's start a conversation about redefining healthcare."
       />
       <header className="max-w-3xl space-y-6 text-center md:text-left">
         <motion.span
@@ -121,7 +121,7 @@ export const Contact = () => {
           <div className="glass rounded-5xl h-64 md:h-80 overflow-hidden relative group">
             <img
               src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200"
-              alt="MASS MedCare Global HQ"
+              alt="MASS Medical Global HQ"
               className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
               referrerPolicy="no-referrer"
             />

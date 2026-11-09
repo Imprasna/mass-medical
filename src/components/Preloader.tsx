@@ -1,62 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Atom, Activity, ShieldCheck, Sparkles, CheckCircle2 } from 'lucide-react';
-
-interface Particle {
-  id: number;
-  initialX: number;
-  initialY: number;
-  targetX: number;
-  targetY: number;
-  size: number;
-  delay: number;
-  color: string;
-  mass: number;
-}
+import { Activity } from 'lucide-react';
 
 export const Preloader = () => {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
-  const [massValue, setMassValue] = useState(0);
-  const [stage, setStage] = useState<'gathering' | 'condensing' | 'critical' | 'release'>('gathering');
-  const [particles, setParticles] = useState<Particle[]>([]);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const progressRef = useRef(0);
-
-  // Generate 48 mass nodes on mount
-  useEffect(() => {
-    const colors = [
-      '#10b981', // emerald-500
-      '#06b6d4', // cyan-500
-      '#3b82f6', // blue-500
-      '#0284c7', // sky-600
-      '#0f172a', // slate-900
-      '#059669'  // emerald-600
-    ];
-
-    const generated: Particle[] = Array.from({ length: 48 }, (_, i) => {
-      const angle = (i / 48) * Math.PI * 2 + (Math.random() * 0.4 - 0.2);
-      const distance = 140 + Math.random() * 180;
-      const initialX = Math.cos(angle) * distance;
-      const initialY = Math.sin(angle) * distance;
-      const targetAngle = angle + Math.PI * 0.75;
-      const targetRadius = 15 + Math.random() * 35;
-
-      return {
-        id: i,
-        initialX,
-        initialY,
-        targetX: Math.cos(targetAngle) * targetRadius,
-        targetY: Math.sin(targetAngle) * targetRadius,
-        size: 3 + Math.random() * 4.5,
-        delay: Math.random() * 0.3,
-        color: colors[i % colors.length],
-        mass: Math.round(10 + Math.random() * 90)
-      };
-    });
-
-    setParticles(generated);
-  }, []);
 
   // Smooth, robust page loading progress tracker
   useEffect(() => {
@@ -65,22 +13,7 @@ export const Preloader = () => {
 
     const updateProgressState = (val: number) => {
       currentVal = Math.min(100, val);
-      progressRef.current = currentVal;
       setProgress(Math.round(currentVal));
-
-      // Calculate Molecular Mass accumulation in Kilodaltons (kDa)
-      const calculatedMass = (currentVal * 5.42).toFixed(1);
-      setMassValue(parseFloat(calculatedMass));
-
-      if (currentVal < 35) {
-        setStage('gathering');
-      } else if (currentVal < 75) {
-        setStage('condensing');
-      } else if (currentVal < 95) {
-        setStage('critical');
-      } else {
-        setStage('release');
-      }
     };
 
     // Incremental progress loop ensuring smooth animation from 0 to 100%
@@ -131,7 +64,6 @@ export const Preloader = () => {
     <AnimatePresence>
       {loading && (
         <motion.div
-          ref={containerRef}
           initial={{ opacity: 1 }}
           exit={{
             opacity: 0,
@@ -141,202 +73,110 @@ export const Preloader = () => {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#F8FAFC] text-slate-900 select-none overflow-hidden"
         >
-          {/* Subtle Ambient Mass Field Background Grid */}
           <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] opacity-40 pointer-events-none" />
 
-          {/* Glowing Center of Mass Core Radial Aura */}
           <motion.div
-            animate={{
-              scale: stage === 'critical' ? [1.2, 1.5, 1.3] : [0.9, 1.15, 0.9],
-              opacity: stage === 'critical' ? 0.65 : 0.35
-            }}
+            animate={{ scale: [0.9, 1.12, 0.9], opacity: [0.25, 0.45, 0.25] }}
             transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
             className="absolute w-96 h-96 rounded-full bg-gradient-to-tr from-emerald-400/20 via-sky-500/20 to-teal-300/20 blur-3xl pointer-events-none"
           />
 
-          {/* Main MASS Gravitational Stage */}
-          <div className="relative flex flex-col items-center justify-center max-w-sm w-full px-6">
-            {/* The Gravitational Particle Field */}
-            <div className="relative w-56 h-56 sm:w-72 sm:h-72 flex items-center justify-center">
-
-              {/* Gravitational Orbital Rings */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-4 rounded-full border border-dashed border-slate-300/80 pointer-events-none"
-              />
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-10 rounded-full border border-emerald-400/30 pointer-events-none"
-              />
-              <motion.div
-                animate={{ scale: [0.95, 1.05, 0.95] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute inset-16 rounded-full border-2 border-slate-900/10 pointer-events-none"
-              />
-
-              {/* Collapsing Mass Particles */}
-              {particles.map((p) => {
-                const isCondensing = stage === 'condensing' || stage === 'critical' || stage === 'release';
-                return (
-                  <motion.div
-                    key={p.id}
-                    initial={{
-                      x: p.initialX,
-                      y: p.initialY,
-                      scale: 0.2,
-                      opacity: 0
-                    }}
-                    animate={{
-                      x: isCondensing ? p.targetX : p.initialX * 0.75,
-                      y: isCondensing ? p.targetY : p.initialY * 0.75,
-                      scale: isCondensing ? [1, 1.3, 1] : 1,
-                      opacity: isCondensing ? [0.8, 1, 0.9] : 0.6
-                    }}
-                    transition={{
-                      duration: 1.2,
-                      delay: p.delay,
-                      ease: [0.16, 1, 0.3, 1]
-                    }}
-                    className="absolute rounded-full shadow-sm"
-                    style={{
-                      width: `${p.size}px`,
-                      height: `${p.size}px`,
-                      backgroundColor: p.color,
-                      boxShadow: `0 0 8px ${p.color}80`
-                    }}
-                  />
-                );
-              })}
-
-              {/* Core Nucleus - Liquid Mass Assembly */}
-              <motion.div
-                animate={{
-                  scale: stage === 'critical' ? [1.08, 1.2, 1.1] : [0.96, 1.04, 0.96],
-                  rotate: [0, 90, 180, 270, 360]
-                }}
-                transition={{
-                  scale: { duration: 0.8, repeat: Infinity, ease: "easeInOut" },
-                  rotate: { duration: 16, repeat: Infinity, ease: "linear" }
-                }}
-                className="relative z-10 w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-white/95 backdrop-blur-2xl border-2 border-slate-900/10 shadow-2xl flex items-center justify-center group overflow-hidden"
+          <div className="relative z-10 flex w-full max-w-xl flex-col items-center px-6">
+            <motion.div
+              animate={{ scale: [1, 1.015, 1] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="w-full text-center"
+            >
+              <h1
+                aria-label="Mass Medical"
+                className="relative bg-gradient-to-r from-slate-900 via-emerald-700 to-slate-900 bg-clip-text text-[clamp(2rem,9vw,4rem)] font-display font-bold tracking-[-0.06em] text-transparent"
+                style={{ perspective: 600 }}
               >
-                {/* Internal Fluid Energy Gradient */}
-                <motion.div
-                  animate={{
-                    background: [
-                      "radial-gradient(circle at 30% 30%, rgba(16,185,129,0.25), transparent 70%)",
-                      "radial-gradient(circle at 70% 70%, rgba(14,165,233,0.25), transparent 70%)",
-                      "radial-gradient(circle at 30% 70%, rgba(20,184,166,0.25), transparent 70%)"
-                    ]
+                <span aria-hidden="true" className="inline-flex whitespace-nowrap">
+                  {'Mass Medical'.split('').map((letter, idx) => (
+                    <motion.span
+                      key={idx}
+                      initial={{ opacity: 0, y: 24, rotateX: -70, scale: 0.8 }}
+                      animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
+                      transition={{
+                        type: 'spring',
+                        stiffness: 180,
+                        damping: 16,
+                        delay: 0.12 + idx * 0.055,
+                      }}
+                      className={
+                        letter === ' '
+                          ? 'inline-block w-[0.28em] shrink-0 text-[0px]'
+                          : 'inline-block'
+                      }
+                    >
+                      {letter === ' ' ? '\u00a0' : letter}
+                    </motion.span>
+                  ))}
+                </span>
+                <motion.span
+                  aria-hidden="true"
+                  animate={{ backgroundPosition: ['150% 0%', '-100% 0%'] }}
+                  transition={{
+                    duration: 2.8,
+                    repeat: Infinity,
+                    repeatDelay: 0.6,
+                    ease: 'easeInOut',
                   }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute inset-0"
-                />
+                  className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 whitespace-nowrap bg-clip-text text-transparent"
+                  style={{
+                    backgroundImage:
+                      'linear-gradient(110deg, transparent 38%, rgba(255,255,255,0.12) 44%, rgba(255,255,255,0.95) 50%, rgba(255,255,255,0.12) 56%, transparent 62%)',
+                    backgroundSize: '250% 100%',
+                  }}
+                >
+                  Mass Medical
+                </motion.span>
+              </h1>
 
-                {/* Animated Biological Mass Icon */}
-                <div className="relative flex flex-col items-center justify-center">
-                  <motion.div
-                    animate={{
-                      scale: [1, 1.1, 1],
-                      rotate: [0, 45, 0]
-                    }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                    className="relative"
-                  >
-                    <Atom className="w-9 h-9 sm:w-11 sm:h-11 text-slate-900 stroke-[1.75]" />
-                    <motion.div
-                      animate={{ scale: [0.8, 1.3, 0.8], opacity: [0.4, 1, 0.4] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                      className="absolute inset-0 m-auto w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-md shadow-emerald-500/50"
-                    />
-                  </motion.div>
-                </div>
+            </motion.div>
 
-                {/* Shockwave Rings on Critical Mass */}
-                {stage === 'critical' && (
-                  <motion.div
-                    initial={{ scale: 0.8, opacity: 1 }}
-                    animate={{ scale: 2.2, opacity: 0 }}
-                    transition={{ duration: 0.8, repeat: Infinity, ease: "easeOut" }}
-                    className="absolute inset-0 rounded-3xl border-2 border-emerald-500 pointer-events-none"
-                  />
-                )}
-              </motion.div>
-            </div>
-
-            {/* Typography Section: Bold Dynamic "MASS" Branding */}
-            <div className="mt-3 flex flex-col items-center text-center space-y-2.5 z-20 w-full">
-              {/* Kinetic MASS letters with weight transformation */}
-              <div className="flex items-center gap-1.5">
-                {['M', 'A', 'S', 'S'].map((letter, idx) => (
-                  <motion.span
-                    key={idx}
-                    initial={{ opacity: 0, y: 12, scale: 0.85 }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                      scale: 1,
-                      fontWeight: stage === 'critical' ? 900 : 800
-                    }}
-                    transition={{
-                      duration: 0.4,
-                      delay: 0.15 + idx * 0.08,
-                      ease: "easeOut"
-                    }}
-                    className="font-display text-4xl sm:text-5xl font-black tracking-tighter text-slate-900 inline-block drop-shadow-xs"
-                  >
-                    {letter}
-                  </motion.span>
-                ))}
+            <div className="mt-10 w-full max-w-sm space-y-3">
+              <div className="flex items-center justify-between px-0.5 font-mono text-xs font-semibold text-slate-700">
+                <span className="flex items-center gap-2 text-emerald-700">
+                  <Activity className="h-4 w-4 animate-pulse text-emerald-600" />
+                  <span>Preparing your experience</span>
+                </span>
+                <span className="tabular-nums text-slate-900">{progress}%</span>
               </div>
 
-              {/* Subtitle & Concept Tag */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.4 }}
-                className="flex items-center gap-2 text-[11px] font-mono font-bold tracking-[0.2em] text-slate-500 uppercase"
+              <div
+                role="progressbar"
+                aria-label="Page loading progress"
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-valuenow={progress}
+                className="relative h-2.5 w-full overflow-hidden rounded-full border border-slate-300 bg-slate-200/90 p-0.5 shadow-inner"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
-                <span>Molecular Accelerated Synthesis</span>
-              </motion.div>
-
-              {/* Live Mass Spectrometry & Working Progress Telemetry Bar */}
-              <div className="w-full pt-2 space-y-2">
-                <div className="flex justify-between items-center text-xs font-mono text-slate-700 font-semibold px-0.5">
-                  <span className="flex items-center gap-1.5 text-emerald-700">
-                    <Activity className="w-3.5 h-3.5 text-emerald-600 animate-pulse" />
-                    <span>MASS: {massValue} kDa</span>
-                  </span>
-                  <span className="text-slate-900 font-bold tabular-nums">{progress}%</span>
-                </div>
-
-                {/* Progress Track with animated high-visibility gradient & inner glow */}
-                <div className="h-2.5 w-full bg-slate-200/90 rounded-full overflow-hidden p-0.5 border border-slate-300 shadow-inner relative">
-                  <div
-                    className="h-full bg-gradient-to-r from-sky-500 via-teal-500 to-emerald-500 rounded-full transition-all duration-100 ease-out relative shadow-sm"
-                    style={{ width: `${progress}%` }}
-                  >
-                    {/* Glowing leading edge light */}
-                    <div className="absolute right-0 top-0 bottom-0 w-2 bg-white/80 rounded-full blur-[1px]" />
-                  </div>
-                </div>
-
-                {/* State Tag Indicator */}
-                <div className="flex justify-between items-center text-[10px] font-mono text-slate-400 px-0.5">
-                  <span>STAGE: {stage.toUpperCase()}</span>
-                  <span>SYSTEM READY</span>
+                <div
+                  className="relative h-full overflow-hidden rounded-full bg-gradient-to-r from-sky-500 via-teal-500 to-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.45)] transition-[width] duration-300 ease-out"
+                  style={{ width: `${progress}%` }}
+                >
+                  <div className="absolute inset-y-0 right-0 w-2 rounded-full bg-white/80 blur-[1px]" />
+                  <motion.div
+                    initial={{ x: '-150%' }}
+                    animate={{ x: progress < 100 ? ['-150%', '350%'] : '350%' }}
+                    transition={{
+                      duration: 1.1,
+                      repeat: progress < 100 ? Infinity : 0,
+                      ease: 'linear',
+                    }}
+                    className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-white/90 to-transparent"
+                    aria-hidden="true"
+                  />
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Quick Skip Control for Immediate Access */}
           <button
             onClick={() => setLoading(false)}
-            className="absolute bottom-6 right-6 px-3.5 py-1.5 rounded-full bg-slate-200/80 hover:bg-slate-300 text-slate-700 text-xs font-mono font-medium transition-all flex items-center gap-1.5 backdrop-blur-sm shadow-xs"
+            className="absolute bottom-6 right-6 flex items-center gap-1.5 rounded-full bg-slate-200/80 px-3.5 py-1.5 font-mono text-xs font-medium text-slate-700 shadow-xs backdrop-blur-sm transition-all hover:bg-slate-300"
           >
             <span>Skip</span>
             <span className="text-slate-400 text-[10px]">ESC</span>

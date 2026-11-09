@@ -39,7 +39,7 @@ import { cn } from '@/src/lib/utils';
 //         badge: 'The Catalyst & Genesis',
 //         title: 'A Vision to Bridge Laboratory and Bedside',
 //         subtitle: 'From Academic Frustration to Bio-Disruption',
-//         description: 'Dr. Elena Vance founded MASS MedCare after witnessing promising oncology molecules languish for over 8 years in bureaucratic academic pipelines. Operating from a 1,200 sq ft lab in Boston, our founding team set out to engineer an agile translational model.',
+//         description: 'Dr. Elena Vance founded MASS Medical after witnessing promising oncology molecules languish for over 8 years in bureaucratic academic pipelines. Operating from a 1,200 sq ft lab in Boston, our founding team set out to engineer an agile translational model.',
 //         image: 'https://images.unsplash.com/photo-1532187863486-abf51ad9f69d?auto=format&fit=crop&q=80&w=1000',
 //         metric: '1,200 sq ft',
 //         metricLabel: 'Initial Discovery Lab',
@@ -56,7 +56,7 @@ import { cn } from '@/src/lib/utils';
 //         badge: 'The Synthesis Leap',
 //         title: 'Continuous Enzymatic Bio-Synthesis Engine',
 //         subtitle: 'Eliminating the 6-Month Chemistry Bottleneck',
-//         description: 'During a time of global medical urgency, MASS MedCare perfected its continuous-flow bio-synthesis platform. We successfully shortened custom peptide and vector synthesis from 24 weeks to just 72 hours with 99.8% purity.',
+//         description: 'During a time of global medical urgency, MASS Medical perfected its continuous-flow bio-synthesis platform. We successfully shortened custom peptide and vector synthesis from 24 weeks to just 72 hours with 99.8% purity.',
 //         image: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&q=80&w=1000',
 //         metric: '72 Hours',
 //         metricLabel: 'Synthesis Turnaround Time',
@@ -73,7 +73,7 @@ import { cn } from '@/src/lib/utils';
 //         badge: 'Decentralized Grid',
 //         title: 'Democratizing Clinical Trial Access',
 //         subtitle: 'Bringing Advanced Research to Home Doorsteps',
-//         description: 'Recognizing that 70% of eligible clinical trial candidates lived more than 2 hours away from trial centers, we pioneered the MASS MedCare Remote Telemetry Protocol. Using wearable biosensors and visiting nurse networks, trial retention hit an unprecedented 96%.',
+//         description: 'Recognizing that 70% of eligible clinical trial candidates lived more than 2 hours away from trial centers, we pioneered the MASS Medical Remote Telemetry Protocol. Using wearable biosensors and visiting nurse networks, trial retention hit an unprecedented 96%.',
 //         image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1000',
 //         metric: '96%',
 //         metricLabel: 'Patient Retention Rate',
@@ -107,7 +107,7 @@ import { cn } from '@/src/lib/utils';
 //         badge: 'The Precision Era',
 //         title: 'A Global Ecosystem for Personalized Health',
 //         subtitle: 'Serving 40+ Countries with Targeted Biologics',
-//         description: 'Today, MASS MedCare stands at the vanguard of precision molecular therapeutics. With over 250 researchers, 60+ hospital partnerships, and our AI-guided synthesis foundry, we are proving that patient-first science creates enduring cures.',
+//         description: 'Today, MASS Medical stands at the vanguard of precision molecular therapeutics. With over 250 researchers, 60+ hospital partnerships, and our AI-guided synthesis foundry, we are proving that patient-first science creates enduring cures.',
 //         image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=1000',
 //         metric: '40+ Nations',
 //         metricLabel: 'Patients & Research Reach',
@@ -116,7 +116,7 @@ import { cn } from '@/src/lib/utils';
 //             '100% renewable-powered green manufacturing facilities',
 //             'Enduring commitment to ethical, affordable medicine'
 //         ],
-//         location: 'MASS MedCare Global Research Campuses',
+//         location: 'MASS Medical Global Research Campuses',
 //         color: 'teal'
 //     }
 // ];
@@ -147,7 +147,7 @@ export const OurStory = () => {
                     </h1>
 
                     <p className="text-base sm:text-lg text-black/70 leading-relaxed font-normal">
-                        MASS MedCare provides medical equipment and healthcare support services for hospitals, healthcare centres, and patients at home. <span className="text-slate-950 font-semibold">We offer medical equipment for rent, including ventilators, BiPAP machines, syringe pumps, infusion pumps, patient monitors, oxygen concentrators, and other healthcare equipment.</span>
+                        MASS Medical provides medical equipment and healthcare support services for hospitals, healthcare centres, and patients at home. <span className="text-slate-950 font-semibold">We offer medical equipment for rent, including ventilators, BiPAP machines, syringe pumps, infusion pumps, patient monitors, oxygen concentrators, and other healthcare equipment.</span>
                     </p>
 
                     <p className="text-sm sm:text-base text-black/60 leading-relaxed">
@@ -155,7 +155,7 @@ export const OurStory = () => {
                     </p>
 
                     <p className="text-sm sm:text-base text-black/60 leading-relaxed">
-                        We aim to make medical equipment and healthcare support easily available, reliable, and affordable. At MASS MedCare, we are committed to providing quality service with care and reliability.
+                        We aim to make medical equipment and healthcare support easily available, reliable, and affordable. At MASS Medical, we are committed to providing quality service with care and reliability.
                     </p>
 
                     {/* Quick Stats Pill Strip */}
@@ -185,7 +185,7 @@ export const OurStory = () => {
                     <div className="relative aspect-[4/3] sm:aspect-[16/11] rounded-5xl overflow-hidden border-4 border-white shadow-2xl bg-slate-100">
                         <img
                             src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=1200"
-                            alt="MASS MedCare State of the Art Laboratory Hub"
+                            alt="MASS Medical State of the Art Laboratory Hub"
                             className="w-full h-full object-cover"
                             referrerPolicy="no-referrer"
                         />
@@ -194,7 +194,7 @@ export const OurStory = () => {
                         {/* Floating Info Overlay */}
                         <div className="absolute bottom-6 left-6 right-6 text-white space-y-1">
                             <div className="text-[10px] font-mono uppercase tracking-widest text-emerald-400 font-bold">
-                                MASS MedCare Global Discovery Center
+                                MASS Medical Global Discovery Center
                             </div>
                             <p className="text-base sm:text-lg font-display font-bold">
                                 Where molecular precision meets patient-first bioethics.

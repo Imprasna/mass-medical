@@ -155,7 +155,7 @@ export const VisionMission = () => {
                             <div className="space-y-4">
                                 <p className="font-display text-xl sm:text-3xl lg:text-1xl font-bold tracking-tight text-white leading-tight">
                                     To become a trusted healthcare partner by making quality medical equipment and healthcare services easily accessible to everyone.
-                                    MASS MedCare — Reliable Medical Support, When You Need It Most.
+                                    MASS Medical — Reliable Medical Support, When You Need It Most.
                                 </p>
                                 {/* <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-light">
                                     We envision a medical ecosystem where therapeutics are engineered at single-cell precision—tailored dynamically to an individual's genetic footprint rather than broad statistical averages.
@@ -182,7 +182,7 @@ export const VisionMission = () => {
                         {/* Vision Footer Quote */}
                         {/* <div className="pt-8 mt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-400 relative z-10">
                             <span className="italic">"We measure scientific success not in journal citations, but in healthy years returned to families."</span>
-                            <span className="font-mono text-white/60 font-semibold shrink-0">— MASS MedCare Charter</span>
+                            <span className="font-mono text-white/60 font-semibold shrink-0">— MASS Medical Charter</span>
                         </div> */}
                     </motion.div>
                 )}

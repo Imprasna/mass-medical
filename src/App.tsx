@@ -82,7 +82,7 @@ export default function App() {
                     <>
                       <SEO
                         title="Medical Equipment Catalog"
-                        description="Browse medical equipment from MASS MedCare, including syringe and infusion pumps, patient monitors, ventilators, BiPAP machines, and CPAP machines."
+                        description="Browse medical equipment from MASS Medical, including syringe and infusion pumps, patient monitors, ventilators, BiPAP machines, and CPAP machines."
                         keywords="medical equipment catalog, syringe pumps, infusion pumps, patient monitors, ventilators, BiPAP, CPAP"
                       />
                       <Products />

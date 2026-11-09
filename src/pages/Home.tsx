@@ -25,7 +25,7 @@ export const Home = () => {
     <div className="pt-32 pb-15 px-6 max-w-7xl mx-auto space-y-14">
       <SEO
         title="Home"
-        description="MASS MedCare - Redefining the boundaries of modern medicine through advanced molecular science and empathetic care."
+        description="MASS Medical - Redefining the boundaries of modern medicine through advanced molecular science and empathetic care."
       />
       {/* Hero Section */}
       {/* <section className="grid lg:grid-cols-2 gap-12 items-center">
@@ -278,7 +278,7 @@ export const Home = () => {
       {/* Products & Services Carousel Section */}
       <ClinicalTrialsCarousel />
 
-      {/* Why Us / The MASS MedCare Difference Section */}
+      {/* Why Us / The MASS Medical Difference Section */}
       <WhyUs />
 
       {/* Clinical Trials List */}

@@ -10,7 +10,7 @@ export const About = () => {
     <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto space-y-16 md:space-y-24">
       <SEO
         title="About Us"
-        description="MASS MedCare exists to bridge the gap between laboratory breakthroughs and patient bedside. Discover our visionary approach to medicine."
+        description="MASS Medical exists to bridge the gap between laboratory breakthroughs and patient bedside. Discover our visionary approach to medicine."
       />
 
       {/* 1. Our Story Section with Interactive Milestone Timeline */}
@@ -37,7 +37,7 @@ export const About = () => {
             </div>
             <p className="text-base md:text-lg text-black/60 italic leading-relaxed">
               "To become a trusted healthcare partner by making quality medical equipment and healthcare services easily accessible to everyone.
-              MASS MedCare — Reliable Medical Support, When You Need It Most."
+              MASS Medical — Reliable Medical Support, When You Need It Most."
             </p>
             <div className="grid grid-cols-2 gap-6 md:gap-8">
               <div>

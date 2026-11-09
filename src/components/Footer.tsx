@@ -86,7 +86,7 @@ export const Footer = () => {
                         <div className="space-y-3">
                             <Link to="/" className="inline-block" aria-label="PharmaNext Home">
                                 <span className="font-display font-black text-2xl sm:text-3xl tracking-tighter text-white">
-                                    MASS<span className="text-emerald-400"> MEDCARE</span>
+                                    MASS<span className="text-emerald-400"> MEDICAL</span>
                                 </span>
                             </Link>
                             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
@@ -222,7 +222,7 @@ export const Footer = () => {
                 {/* Bottom Legal & Meta Bar */}
                 <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500 font-medium">
                     <div className="flex items-center gap-6">
-                        <span>© {new Date().getFullYear()} MASS MEDCARE</span>
+                        <span>© {new Date().getFullYear()} MASS MEDICAL</span>
                         <span className="hidden md:inline-block">•</span>
                         <span className="hidden md:inline-block">ALL RIGHTS RESERVED</span>
                     </div>

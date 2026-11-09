@@ -25,7 +25,7 @@ export const Navbar = () => {
       <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-6xl">
         <div className="glass rounded-full px-6 md:px-8 py-4 flex items-center justify-between transition-all duration-500">
           <Link to="/" className="font-display font-bold text-xl tracking-tighter z-50">
-            MASS MEDCARE
+            MASS MEDICAL
           </Link>
 
           {/* Desktop Nav */}

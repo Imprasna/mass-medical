@@ -176,7 +176,7 @@ export const WhyUs = () => {
                         className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/10 text-black/60 text-xs font-bold uppercase tracking-[0.25em]"
                     >
                         <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                        Why Choose MASS MedCare
+                        Why Choose MASS Medical
                     </motion.div>
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
@@ -203,7 +203,7 @@ export const WhyUs = () => {
                             PN
                         </div>
                         <div>
-                            <h4 className="font-bold text-sm">The MASS MedCare Standard</h4>
+                            <h4 className="font-bold text-sm">The MASS Medical Standard</h4>
                             <p className="text-xs text-black/40">Verified by 3rd-party clinical audits</p>
                         </div>
                     </div>
@@ -266,7 +266,7 @@ export const WhyUs = () => {
                                     Integrated Multi-Omics & Next-Gen Synthesis
                                 </h3>
                                 <p className="text-base sm:text-lg text-black/70 leading-relaxed">
-                                    Unlike traditional pharmaceutical pipelines that isolate biology, chemistry, and clinical validation into silos, MASS MedCare combines genomic sequencing, computational chemistry, and real-world clinical telemetry under one unified framework.
+                                    Unlike traditional pharmaceutical pipelines that isolate biology, chemistry, and clinical validation into silos, MASS Medical combines genomic sequencing, computational chemistry, and real-world clinical telemetry under one unified framework.
                                 </p>
                             </div>
 

@@ -127,7 +127,7 @@ export const Services = () => {
           animate={{ opacity: 1, y: 0 }}
           className="font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter leading-none"
         >
-          Comprehensive <br className="hidden sm:block" /> Medcare Solutions.
+          Comprehensive <br className="hidden sm:block" /> Medical Solutions.
         </motion.h1>
       </header>
 
