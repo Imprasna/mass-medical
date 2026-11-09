@@ -18,6 +18,7 @@ import {
   Sparkles,
   Layers,
   Filter,
+  ShoppingCart,
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -663,7 +664,7 @@ export const Products = () => {
                               onChange={(e) => setRequestName(e.target.value)}
                               placeholder="Your Full Name *"
                               aria-label="Your Full Name"
-                              className="w-full bg-slate-100/90 border border-slate-200 rounded-xl pl-9 pr-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                              className="w-full bg-slate-100/90 border border-emerald-500 rounded-xl pl-9 pr-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                             />
                           </div>
 
@@ -678,7 +679,7 @@ export const Products = () => {
                               onChange={(e) => setRequestPhone(e.target.value)}
                               placeholder="Contact Number *"
                               aria-label="Contact Number"
-                              className="w-full bg-slate-100/90 border border-slate-200 rounded-xl pl-9 pr-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                              className="w-full bg-slate-100/90 border border-emerald-500 rounded-xl pl-9 pr-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                             />
                           </div>
 
@@ -693,7 +694,7 @@ export const Products = () => {
                               onChange={(e) => setRequestEmail(e.target.value)}
                               placeholder="Email Address *"
                               aria-label="Email Address"
-                              className="w-full bg-slate-100/90 border border-slate-200 rounded-xl pl-9 pr-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                              className="w-full bg-slate-100/90 border border-emerald-500 rounded-xl pl-9 pr-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                             />
                           </div>
 
@@ -708,12 +709,13 @@ export const Products = () => {
                               onChange={(e) => setRequestClinic(e.target.value)}
                               placeholder="Clinic / Hospital Name *"
                               aria-label="Clinic or Hospital Name"
-                              className="w-full bg-slate-100/90 border border-slate-200 rounded-xl pl-9 pr-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                              className="w-full bg-slate-100/90 border border-emerald-500 rounded-xl pl-9 pr-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                             />
                           </div>
 
                           {/* QUANTITY */}
                           <div className="relative">
+                            <ShoppingCart className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                             <input
                               type="number"
                               required
@@ -724,7 +726,7 @@ export const Products = () => {
                               onChange={(e) => setRequestQuantity(e.target.value)}
                               placeholder="Quantity *"
                               aria-label="Quantity"
-                              className="w-full bg-slate-100/90 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                              className="w-full bg-slate-100/90 border border-emerald-500 rounded-xl pl-9 pr-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                             />
                           </div>
 
@@ -739,7 +741,7 @@ export const Products = () => {
                               onChange={(e) => setRequestAddress(e.target.value)}
                               placeholder="Full Address *"
                               aria-label="Full Address"
-                              className="w-full resize-y bg-slate-100/90 border border-slate-200 rounded-xl pl-9 pr-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                              className="w-full resize-y bg-slate-100/90 border border-emerald-500 rounded-xl pl-9 pr-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                             />
                           </div>
                         </div>

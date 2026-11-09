@@ -90,7 +90,12 @@ export const Contact = () => {
               </div>
               <div>
                 <p className="text-[10px] font-bold text-black/40 uppercase tracking-widest">Email Us</p>
-                <p className="text-lg md:text-xl font-bold break-all">hello@MASS MedCare.com</p>
+                <a
+                  href="mailto:massmedicalhealthcare@gmail.com"
+                  className="text-lg md:text-xl font-bold break-all hover:underline focus-visible:underline"
+                >
+                  massmedicalhealthcare@gmail.com
+                </a>
               </div>
             </div>
             <div className="flex items-center gap-4 md:gap-6">
@@ -169,7 +174,7 @@ export const Contact = () => {
                     onChange={handleInputChange}
                     required
                     disabled={status === 'loading'}
-                    className="w-full bg-black/5 border-none rounded-2xl px-4 md:px-6 py-3 md:py-4 focus:ring-2 focus:ring-black transition-all text-sm outline-none"
+                    className="w-full bg-black/5 border border-black rounded-2xl px-4 md:px-6 py-3 md:py-4 focus:ring-2 focus:Send a Message transition-all text-sm outline-none"
                     placeholder="John"
                   />
                 </div>
@@ -182,7 +187,7 @@ export const Contact = () => {
                     onChange={handleInputChange}
                     required
                     disabled={status === 'loading'}
-                    className="w-full bg-black/5 border-none rounded-2xl px-4 md:px-6 py-3 md:py-4 focus:ring-2 focus:ring-black transition-all text-sm outline-none"
+                    className="w-full bg-black/5 border border-black rounded-2xl px-4 md:px-6 py-3 md:py-4 focus:ring-2 focus:ring-black transition-all text-sm outline-none"
                     placeholder="Doe"
                   />
                 </div>
@@ -196,7 +201,7 @@ export const Contact = () => {
                   onChange={handleInputChange}
                   required
                   disabled={status === 'loading'}
-                  className="w-full bg-black/5 border-none rounded-2xl px-4 md:px-6 py-3 md:py-4 focus:ring-2 focus:ring-black transition-all text-sm outline-none"
+                  className="w-full bg-black/5 border border-black rounded-2xl px-4 md:px-6 py-3 md:py-4 focus:ring-2 focus:ring-black transition-all text-sm outline-none"
                   placeholder="john@example.com"
                 />
               </div>
@@ -207,7 +212,7 @@ export const Contact = () => {
                   value={formData.subject}
                   onChange={handleInputChange}
                   disabled={status === 'loading'}
-                  className="w-full bg-black/5 border-none rounded-2xl px-4 md:px-6 py-3 md:py-4 focus:ring-2 focus:ring-black transition-all appearance-none text-sm outline-none"
+                  className="w-full bg-black/5 border border-black rounded-2xl px-4 md:px-6 py-3 md:py-4 focus:ring-2 focus:ring-black transition-all appearance-none text-sm outline-none"
                 >
                   <option>General Inquiry</option>
                   <option>Clinical Trials</option>
@@ -224,7 +229,7 @@ export const Contact = () => {
                   onChange={handleInputChange}
                   required
                   disabled={status === 'loading'}
-                  className="w-full bg-black/5 border-none rounded-2xl px-4 md:px-6 py-3 md:py-4 focus:ring-2 focus:ring-black transition-all text-sm outline-none"
+                  className="w-full bg-black/5 border border-black rounded-2xl px-4 md:px-6 py-3 md:py-4 focus:ring-2 focus:ring-black transition-all text-sm outline-none"
                   placeholder="How can we help you?"
                 />
               </div>

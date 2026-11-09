@@ -136,7 +136,7 @@ export const PatientPortalModal = ({
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto overscroll-y-contain p-3 sm:p-4 md:p-6">
 
           {/* Background */}
           <motion.div
@@ -156,10 +156,10 @@ export const PatientPortalModal = ({
             role="dialog"
             aria-modal="true"
             aria-labelledby="portal-title"
-            className="relative w-full max-w-lg bg-white/95 backdrop-blur-2xl rounded-[2.5rem] overflow-hidden shadow-2xl border border-slate-200"
+            className="relative my-auto flex max-h-[calc(100vh-1.5rem)] max-h-[calc(100dvh-1.5rem)] w-full max-w-lg shrink-0 flex-col overflow-hidden rounded-[2rem] border border-slate-200 bg-white/95 shadow-2xl backdrop-blur-2xl sm:rounded-[2.5rem] sm:max-h-[calc(100vh-2rem)] sm:max-h-[calc(100dvh-2rem)] md:max-h-[calc(100vh-3rem)] md:max-h-[calc(100dvh-3rem)]"
           >
 
-            <div className="p-8 md:p-10 space-y-7">
+            <div className="min-h-0 space-y-7 overflow-y-auto overscroll-y-contain p-5 [scrollbar-gutter:stable] [-webkit-overflow-scrolling:touch] sm:p-8 md:p-10">
 
               {/* Header */}
               <div className="flex items-center justify-between">
