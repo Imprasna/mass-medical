@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import { PatientPortalModal } from './PatientPortalModal';
+import fullLogo from '../assets/images/mass_medical_agency_centered.svg';
+import compactLogo from '../assets/images/massmedical_logo.svg';
 
 const navItems = [
   { name: 'Home', path: '/' },
@@ -24,8 +26,21 @@ export const Navbar = () => {
     <>
       <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-6xl">
         <div className="glass rounded-full px-6 md:px-8 py-4 flex items-center justify-between transition-all duration-500">
-          <Link to="/" className="font-display font-bold text-xl tracking-tighter z-50">
-            MASS MEDICAL
+          <Link
+            to="/"
+            aria-label="MASS Medical home"
+            className="z-50 flex h-9 w-11 shrink-0 items-center transition-transform duration-300 hover:scale-[1.03] lg:w-44"
+          >
+            <img
+              src={compactLogo}
+              alt=""
+              className="h-full w-full object-contain lg:hidden"
+            />
+            <img
+              src={fullLogo}
+              alt=""
+              className="hidden h-full w-full object-contain lg:block"
+            />
           </Link>
 
           {/* Desktop Nav */}

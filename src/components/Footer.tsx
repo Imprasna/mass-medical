@@ -14,6 +14,8 @@ import {
     Award,
     Globe
 } from 'lucide-react';
+import fullLogo from '../assets/images/mass_medical_agency_centered.svg';
+import compactLogo from '../assets/images/massmedical_logo.svg';
 
 export const Footer = () => {
     const [email, setEmail] = useState('');
@@ -84,9 +86,16 @@ export const Footer = () => {
                     {/* Brand Column (Col Span 4) */}
                     <div className="lg:col-span-4 space-y-6">
                         <div className="space-y-3">
-                            <Link to="/" className="inline-block" aria-label="PharmaNext Home">
-                                <span className="font-display font-black text-2xl sm:text-3xl tracking-tighter text-white">
-                                    MASS<span className="text-emerald-400"> MEDICAL</span>
+                            <Link
+                                to="/"
+                                className="inline-flex min-h-11 items-center transition-transform duration-300 hover:scale-[1.02]"
+                                aria-label="MASS Medical home"
+                            >
+                                <span className="flex h-11 w-14 items-center justify-center lg:hidden">
+                                    <img src={compactLogo} alt="" className="h-9 w-12 object-contain" />
+                                </span>
+                                <span className="hidden h-11 items-center rounded-xl bg-white px-2.5 py-1 lg:flex">
+                                    <img src={fullLogo} alt="" className="h-full w-60 object-contain" />
                                 </span>
                             </Link>
                             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
