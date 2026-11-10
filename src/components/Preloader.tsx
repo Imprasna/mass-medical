@@ -69,11 +69,11 @@ export const Preloader = () => {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.025, filter: 'blur(8px)' }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-0 z-[9999] flex select-none flex-col items-center justify-center overflow-hidden bg-[#071523] text-white"
+          className="fixed inset-0 z-[9999] flex select-none flex-col items-center justify-center overflow-hidden bg-[#102230] text-white"
         >
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,rgba(19,113,151,0.22),transparent_48%),radial-gradient(#9bd8e8_0.7px,transparent_0.7px)] [background-size:auto,34px_34px] opacity-40"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,rgba(0,152,192,0.24),transparent_48%),radial-gradient(rgba(220,232,238,0.72)_0.7px,transparent_0.7px)] [background-size:auto,34px_34px] opacity-40"
           />
 
           <motion.div
@@ -121,7 +121,7 @@ export const Preloader = () => {
                       key={path}
                       d={path}
                       fill="none"
-                      stroke="#a5f3fc"
+                      stroke="#7ce4ed"
                       strokeWidth="4"
                       strokeLinejoin="round"
                       strokeLinecap="round"

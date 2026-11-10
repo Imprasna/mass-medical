@@ -40,8 +40,8 @@ export const Footer = () => {
             <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-sky-400 via-teal-400 via-emerald-400 to-transparent opacity-90 shadow-sm shadow-emerald-500/20" />
 
             {/* Subtle Background Glows and Atmospheric Mesh */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(14,165,233,0.06),transparent_45%)] pointer-events-none" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(16,185,129,0.06),transparent_45%)] pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(0,102,179,0.08),transparent_45%)] pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(0,200,216,0.07),transparent_45%)] pointer-events-none" />
             <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none opacity-40" />
 
             {/* Main Footer Container */}
