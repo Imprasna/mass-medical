@@ -34,6 +34,7 @@ export const Contact = () => {
           firstName: formData.firstName,
           lastName: formData.lastName,
           email: formData.email,
+          subject: formData.subject,
           message: formData.message,
           // phone is intentionally omitted from ui but could be added
         }),
@@ -123,6 +124,8 @@ export const Contact = () => {
               src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200"
               alt="MASS Medical Global HQ"
               className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+              loading="lazy"
+              decoding="async"
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 flex items-center justify-center">

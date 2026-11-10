@@ -2,11 +2,11 @@
 
 ## What the site now does
 
-- Adds route-specific page titles, meta descriptions, and keyword phrases for `/`, `/about`, `/services`, `/products`, `/care`, and `/contact`.
+- Adds route-specific page titles, meta descriptions, and keyword phrases for `/`, `/about`, `/services`, `/products`, `/research`, `/care`, and `/contact`.
 - Emits canonical URLs, Open Graph and Twitter metadata, and JSON-LD for the organization, website, and current page.
 - Uses semantic `<main>` landmarks and a keyboard-visible “Skip to main content” link.
 - Provides an SVG social-sharing image at `/social-preview.svg`.
-- Generates a sitemap for the six public routes when the deployed origin is configured.
+- Generates a sitemap for the seven public routes when the deployed origin is configured.
 
 ## Configure the real production domain
 
@@ -49,7 +49,7 @@ Replace `public/social-preview.svg` with on-brand artwork if desired. Keep a 120
 
 ## Sitemap and robots
 
-`robots.txt` allows public crawling. The sitemap generator lists only the six public routes and does not include the not-found page. Regenerate it on every production build after setting the production origin. Submit `https://YOUR_REAL_DOMAIN/sitemap.xml` in Google Search Console and Bing Webmaster Tools after verifying the site. Ensure the deployed host serves the sitemap and robots file at the root.
+`robots.txt` allows public crawling. The sitemap generator lists only the seven public routes and does not include the not-found page. Regenerate it on every production build after setting the production origin. Submit `https://YOUR_REAL_DOMAIN/sitemap.xml` in Google Search Console and Bing Webmaster Tools after verifying the site. Ensure the deployed host serves the sitemap and robots file at the root.
 
 ## Structured-data and release checks
 

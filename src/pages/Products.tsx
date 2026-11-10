@@ -260,10 +260,7 @@ export const Products = () => {
     setRequestError('');
 
     try {
-      const API_URL = (
-        import.meta.env.VITE_API_URL ||
-        'http://localhost:3001'
-      ).replace(/\/$/, '');
+      const API_URL = import.meta.env.VITE_API_URL?.replace(/\/$/, '') ?? '';
 
       const response = await fetch(
         `${API_URL}/api/product-request`,
@@ -386,6 +383,8 @@ export const Products = () => {
                   src={product.image}
                   alt={product.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                 />
 
@@ -533,6 +532,7 @@ export const Products = () => {
                     src={selectedProduct.image}
                     alt={selectedProduct.name}
                     className="absolute inset-0 w-full h-full object-cover opacity-35"
+                    decoding="async"
                     referrerPolicy="no-referrer"
                   />
 

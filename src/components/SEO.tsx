@@ -50,6 +50,12 @@ const routeMetadata: Record<string, { title: string; description: string; keywor
     keywords: 'contact MASS Medical, medical equipment inquiry, healthcare supplier contact, hospital equipment quote',
     schemaType: 'ContactPage',
   },
+  '/research': {
+    title: 'Clinical Research',
+    description: 'Learn about MASS Medical research programs and clinical research participation.',
+    keywords: 'clinical research, medical research, clinical trials',
+    schemaType: 'WebPage',
+  },
 };
 
 const getSiteUrl = () => {

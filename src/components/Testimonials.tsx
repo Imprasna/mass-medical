@@ -124,6 +124,8 @@ export const Testimonials = () => {
                 src={testimonial.image}
                 alt={testimonial.name}
                 className="w-12 h-12 rounded-2xl object-cover border-2 border-white/50"
+                loading="lazy"
+                decoding="async"
                 referrerPolicy="no-referrer"
               />
               <div>

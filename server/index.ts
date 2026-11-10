@@ -163,7 +163,7 @@ app.get("/api/health", (_req, res) => {
 // ==================================================
 
 app.post("/api/contact", async (req, res) => {
-  const { firstName, lastName, email, phone, message } = req.body;
+  const { firstName, lastName, email, phone, subject, message } = req.body;
 
   if (!firstName || !lastName || !email || !message) {
     return res.status(400).json({
@@ -182,6 +182,7 @@ app.post("/api/contact", async (req, res) => {
         { label: "First Name", value: firstName },
         { label: "Last Name", value: lastName },
         { label: "Email Address", value: email },
+        { label: "Subject", value: subject },
         { label: "Phone Number", value: phone },
         { label: "Message", value: message },
       ],

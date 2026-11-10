@@ -7,26 +7,29 @@ export const ScrollToTopButton: React.FC = () => {
     const [scrollProgress, setScrollProgress] = useState(0);
 
     useEffect(() => {
+        let frame = 0;
         const handleScroll = () => {
-            const currentScrollY = window.scrollY;
-            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+            if (frame) return;
 
-            // Calculate scroll progress percentage (0 - 100)
-            if (totalHeight > 0) {
-                const progress = Math.min(100, Math.max(0, (currentScrollY / totalHeight) * 100));
-                setScrollProgress(progress);
-            }
+            frame = window.requestAnimationFrame(() => {
+                frame = 0;
+                const currentScrollY = window.scrollY;
+                const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
 
-            // Show button after scrolling down 280px
-            if (currentScrollY > 280) {
-                setIsVisible(true);
-            } else {
-                setIsVisible(false);
-            }
+                if (totalHeight > 0) {
+                    const progress = Math.min(100, Math.max(0, (currentScrollY / totalHeight) * 100));
+                    setScrollProgress(progress);
+                }
+
+                setIsVisible(currentScrollY > 280);
+            });
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            if (frame) window.cancelAnimationFrame(frame);
+        };
     }, []);
 
     const scrollToTop = () => {

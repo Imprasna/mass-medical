@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
+import { useNavigate } from 'react-router-dom';
 import { HeartPulse, UserCheck, Stethoscope, Pill, ArrowRight } from 'lucide-react';
 import { PatientPortalModal } from '../components/PatientPortalModal';
 import { SEO } from '../components/SEO';
 
 export const PatientCare = () => {
   const [isPortalOpen, setIsPortalOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto space-y-16 md:space-y-20">
@@ -47,6 +49,8 @@ export const PatientCare = () => {
           src="https://images.pexels.com/photos/20860581/pexels-photo-20860581.jpeg?auto=format&fit=crop&q=80&w=1600"
           alt="Patient-Centered Care Approach"
           className="w-full h-full object-cover opacity-80"
+          loading="lazy"
+          decoding="async"
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8 md:p-12">
@@ -68,6 +72,8 @@ export const PatientCare = () => {
               src="https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg?auto=format&fit=crop&q=80&w=1000"
               alt="Patient Support Programs"
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              loading="lazy"
+              decoding="async"
               referrerPolicy="no-referrer"
             />
           </div>
@@ -106,6 +112,8 @@ export const PatientCare = () => {
               src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=1000"
               alt="Personalized Medical Care"
               className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700"
+              loading="lazy"
+              decoding="async"
               referrerPolicy="no-referrer"
             />
           </div>
@@ -147,7 +155,8 @@ export const PatientCare = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: idx * 0.1 }}
-            onClick={() => alert(`Opening ${item.label}...`)}
+            onClick={() => navigate('/contact')}
+            aria-label={`Contact us about ${item.label}`}
             className="glass p-6 md:p-8 rounded-4xl flex flex-col items-center gap-3 md:gap-4 hover:bg-white transition-all group"
           >
             <item.icon className="w-6 h-6 md:w-8 md:h-8 text-black/40 group-hover:text-black transition-colors" />

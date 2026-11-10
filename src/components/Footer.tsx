@@ -19,14 +19,34 @@ import compactLogo from '../assets/images/massmedical_logo.svg';
 
 export const Footer = () => {
     const [email, setEmail] = useState('');
-    const [isSubscribed, setIsSubscribed] = useState(false);
+    const [subscriptionStatus, setSubscriptionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+    const [subscriptionMessage, setSubscriptionMessage] = useState('');
 
-    const handleSubscribe = (e: React.FormEvent) => {
+    const handleSubscribe = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (email.trim()) {
-            setIsSubscribed(true);
+        if (!email.trim() || subscriptionStatus === 'loading') return;
+
+        setSubscriptionStatus('loading');
+        setSubscriptionMessage('');
+
+        try {
+            const response = await fetch('/api/newsletter', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email.trim() }),
+            });
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(result.error || 'Unable to subscribe right now.');
+            }
+
             setEmail('');
-            setTimeout(() => setIsSubscribed(false), 4000);
+            setSubscriptionStatus('success');
+            setSubscriptionMessage('Subscription confirmed. Welcome aboard!');
+        } catch (error) {
+            setSubscriptionStatus('error');
+            setSubscriptionMessage(error instanceof Error ? error.message : 'Network error. Please try again.');
         }
     };
 
@@ -199,6 +219,7 @@ export const Footer = () => {
                                     type="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
+                                    disabled={subscriptionStatus === 'loading'}
                                     placeholder="Enter hospital or clinic email"
                                     required
                                     aria-label="Email address for clinical bulletin"
@@ -207,20 +228,23 @@ export const Footer = () => {
                                 <button
                                     type="submit"
                                     aria-label="Submit newsletter subscription"
-                                    className="absolute right-1.5 top-1.5 bottom-1.5 px-3 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
+                                    disabled={subscriptionStatus === 'loading'}
+                                    className="absolute right-1.5 top-1.5 bottom-1.5 px-3 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 disabled:opacity-50"
                                 >
-                                    <ArrowRight className="w-3.5 h-3.5" />
+                                    {subscriptionStatus === 'loading' ? '...' : <ArrowRight className="w-3.5 h-3.5" />}
                                 </button>
                             </div>
 
-                            {isSubscribed && (
+                            {subscriptionStatus !== 'idle' && subscriptionStatus !== 'loading' && (
                                 <motion.div
                                     initial={{ opacity: 0, y: -5 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className="flex items-center gap-1.5 text-xs text-emerald-400 font-medium"
+                                    role="status"
+                                    aria-live="polite"
+                                    className={`flex items-center gap-1.5 text-xs font-medium ${subscriptionStatus === 'success' ? 'text-emerald-400' : 'text-red-300'}`}
                                 >
-                                    <CheckCircle2 className="w-3.5 h-3.5" />
-                                    <span>Subscription confirmed. Welcome aboard!</span>
+                                    {subscriptionStatus === 'success' && <CheckCircle2 className="w-3.5 h-3.5" />}
+                                    <span>{subscriptionMessage}</span>
                                 </motion.div>
                             )}
                         </form>

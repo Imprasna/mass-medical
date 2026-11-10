@@ -55,7 +55,7 @@ export const PatientPortalModal = ({
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+  const API_URL = import.meta.env.VITE_API_URL?.replace(/\/$/, '') ?? '';
 
   const handleChange = (
     e: React.ChangeEvent<

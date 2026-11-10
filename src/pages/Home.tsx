@@ -197,6 +197,8 @@ export const Home = () => {
               src={herosecImg}
               alt="Medical Scientist inspecting sterile pharmaceutical supplies in sterile hospital laboratory"
               className="w-full h-full object-cover object-center"
+              fetchPriority="high"
+              decoding="async"
               referrerPolicy="no-referrer"
             />
             {/* Soft Ambient Depth Gradient */}

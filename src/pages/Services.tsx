@@ -140,6 +140,8 @@ export const Services = () => {
           src={servicesImg}
           alt="Excellence in Every Molecule"
           className="w-full h-full object-cover opacity-70"
+          loading="lazy"
+          decoding="async"
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent flex items-center p-8 md:p-16">
@@ -185,6 +187,8 @@ export const Services = () => {
                 src={service.image}
                 alt={service.title}
                 className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
+                loading="lazy"
+                decoding="async"
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -215,6 +219,8 @@ export const Services = () => {
               src={UncompromisingQualityImg}
               alt="Uncompromising Quality Control"
               className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
               referrerPolicy="no-referrer"
             />
           </div>

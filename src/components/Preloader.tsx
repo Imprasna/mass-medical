@@ -11,7 +11,7 @@ const logoPaths = [
   'M 244.0,247.0 L 240.0,247.0 L 237.0,249.0 L 236.0,251.0 L 227.0,260.0 L 226.0,260.0 L 222.0,265.0 L 218.0,268.0 L 218.0,269.0 L 214.0,272.0 L 207.0,280.0 L 206.0,280.0 L 205.0,282.0 L 205.0,358.0 L 207.0,364.0 L 210.0,369.0 L 218.0,377.0 L 230.0,382.0 L 242.0,382.0 L 243.0,381.0 L 249.0,380.0 L 256.0,376.0 L 263.0,368.0 L 267.0,358.0 L 267.0,272.0 L 259.0,263.0 L 260.0,262.0 L 259.0,263.0 Z',
 ];
 
-const MINIMUM_DISPLAY_DURATION = 2700;
+const MINIMUM_DISPLAY_DURATION = 300;
 
 export const Preloader = () => {
   const [loading, setLoading] = useState(true);
@@ -27,17 +27,18 @@ export const Preloader = () => {
       setProgress(Math.round(currentVal));
     };
 
-    const interval = setInterval(() => {
+    let hideTimeout: number | undefined;
+    const interval = window.setInterval(() => {
       if (currentVal < 90) {
-        updateProgressState(currentVal + Math.random() * 3.5 + 1.8);
+        updateProgressState(currentVal + (isDocReady ? 12 : 5));
       } else if (currentVal < 99) {
-        updateProgressState(currentVal + (isDocReady ? 3.5 : 0.8));
+        updateProgressState(currentVal + (isDocReady ? 10 : 1));
       } else if (isDocReady && performance.now() - startedAt >= MINIMUM_DISPLAY_DURATION) {
         updateProgressState(100);
         clearInterval(interval);
-        setTimeout(() => setLoading(false), 400);
+        hideTimeout = window.setTimeout(() => setLoading(false), 150);
       }
-    }, 30);
+    }, 50);
 
     const onPageLoaded = () => {
       isDocReady = true;
@@ -49,6 +50,8 @@ export const Preloader = () => {
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
+        clearInterval(interval);
+        if (hideTimeout !== undefined) window.clearTimeout(hideTimeout);
         updateProgressState(100);
         setLoading(false);
       }
@@ -56,7 +59,8 @@ export const Preloader = () => {
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      clearInterval(interval);
+      window.clearInterval(interval);
+      if (hideTimeout !== undefined) window.clearTimeout(hideTimeout);
       window.removeEventListener('load', onPageLoaded);
       window.removeEventListener('keydown', handleKeyDown);
     };

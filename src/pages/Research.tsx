@@ -1,9 +1,12 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import { useNavigate } from 'react-router-dom';
 import { Beaker, FlaskConical, Microscope, TestTube2, ArrowRight } from 'lucide-react';
 import { SEO } from '../components/SEO';
 
 export const Research = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto space-y-20">
       <SEO
@@ -44,6 +47,8 @@ export const Research = () => {
           src="https://images.pexels.com/photos/35967917/pexels-photo-35967917.png"
           alt="Molecular Research Innovation"
           className="w-full h-full object-cover opacity-60"
+          loading="lazy"
+          decoding="async"
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent flex items-center p-8 md:p-16">
@@ -72,6 +77,8 @@ export const Research = () => {
                 src={item.image}
                 alt={item.title}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80"
+                loading="lazy"
+                decoding="async"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
@@ -83,7 +90,7 @@ export const Research = () => {
               <h3 className="text-xl md:text-2xl font-display font-bold">{item.title}</h3>
               <p className="text-sm md:text-base text-black/60">{item.desc}</p>
               <button
-                onClick={() => alert(`Learning more about ${item.title}...`)}
+                onClick={() => navigate('/contact')}
                 className="flex items-center gap-2 text-xs md:text-sm font-bold group-hover:translate-x-2 transition-transform"
               >
                 Learn More <ArrowRight className="w-4 h-4" />
@@ -101,7 +108,7 @@ export const Research = () => {
               Join our mission to advance medical science. We are currently looking for volunteers for our latest respiratory health study.
             </p>
             <button
-              onClick={() => alert('Trial application form will be available soon!')}
+              onClick={() => navigate('/contact')}
               className="w-full sm:w-auto bg-black text-white px-10 py-4 rounded-full font-bold hover:scale-105 transition-transform"
             >
               Apply for Trials
@@ -112,6 +119,8 @@ export const Research = () => {
               src="https://images.pexels.com/photos/8531342/pexels-photo-8531342.jpeg"
               alt="Clinical Research Participation"
               className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
               referrerPolicy="no-referrer"
             />
           </div>

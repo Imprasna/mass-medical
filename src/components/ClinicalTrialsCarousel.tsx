@@ -439,7 +439,8 @@ export const ClinicalTrialsCarousel = () => {
                                                 src={item?.image}
                                                 alt={item?.title}
                                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                                loading={index < 3 ? "eager" : "lazy"}
+                                                loading="lazy"
+                                                decoding="async"
                                                 referrerPolicy="no-referrer"
                                                 onError={(event) => {
                                                     event.currentTarget.style.display = "none";
@@ -658,6 +659,7 @@ export const ClinicalTrialsCarousel = () => {
                                     src={selectedProduct.image}
                                     alt={selectedProduct.title}
                                     className="w-full h-full object-cover"
+                                    decoding="async"
                                     referrerPolicy="no-referrer"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent" />
@@ -786,8 +788,8 @@ export const ClinicalTrialsCarousel = () => {
                                     </button>
                                     <button
                                         onClick={() => {
-                                            alert(`Inquiry initiated for protocol: ${selectedProduct.trialCode} - ${selectedProduct.title}. Our clinical team will reach out.`);
                                             setSelectedProduct(null);
+                                            navigate("/contact");
                                         }}
                                         className="flex-1 sm:flex-none px-6 py-3 rounded-full bg-black text-white font-bold text-xs hover:scale-105 transition-transform flex items-center justify-center gap-2"
                                     >

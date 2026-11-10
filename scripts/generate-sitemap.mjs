@@ -17,7 +17,7 @@ if (!['http:', 'https:'].includes(siteUrl.protocol)) {
   throw new Error('SITE_URL must use http or https.');
 }
 const origin = siteUrl.href.replace(/\/+$/, '');
-const routes = ['/', '/about', '/services', '/products', '/care', '/contact'];
+const routes = ['/', '/about', '/services', '/products', '/research', '/care', '/contact'];
 const lastmod = new Date().toISOString().slice(0, 10);
 const entries = routes.map((route) => `  <url>\n    <loc>${origin}${route}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`).join('\n');
 const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries}\n</urlset>\n`;
