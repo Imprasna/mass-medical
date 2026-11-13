@@ -146,6 +146,9 @@ const sendAdminEmail = async ({
     html: createEmailTemplate(title, description, fields),
   });
 
+
+
+  
   console.log("Admin Email Sent:", info.messageId);
   return info;
 };
