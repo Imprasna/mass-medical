@@ -79,7 +79,7 @@ export const PatientPortalModal = ({
     setError('');
 
     try {
-      const response = await fetch(`${API_URL}/api/trigger/service`, {
+      const response = await fetch(`${API_URL}/api/service`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
