@@ -241,7 +241,7 @@ app.post("/api/newsletter", async (req, res) => {
 // PATIENT PORTAL ACCESS REQUEST API
 // ==================================================
 
-app.post("/api/trigger/service", async (req, res) => {
+app.post("/api/service", async (req, res) => {
   const {
     fullName,
     dob,
