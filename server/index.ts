@@ -1,6 +1,6 @@
+
 import express from "express";
 import cors from "cors";
-import { PrismaClient } from "@prisma/client";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 
@@ -11,17 +11,11 @@ dotenv.config();
 // ==================================================
 
 const app = express();
-const prisma = new PrismaClient();
 const port = Number(process.env.PORT || 3001);
-
-// const SMTP_EMAIL = process.env.SMTP_EMAIL;
-// const SMTP_APP_PASSWORD = process.env.SMTP_APP_PASSWORD;
 
 const SMTP_EMAIL = process.env.SMTP_EMAIL;
 const SMTP_APP_PASSWORD = process.env.SMTP_APP_PASSWORD;
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
-
-
 
 if (!SMTP_EMAIL || !SMTP_APP_PASSWORD) {
   throw new Error("SMTP_EMAIL and SMTP_APP_PASSWORD must be configured in .env");
@@ -202,7 +196,7 @@ app.post("/api/contact", async (req, res) => {
 });
 
 // ==================================================
-// NEWSLETTER API - PRISMA DATABASE + ADMIN EMAIL
+// NEWSLETTER API - ADMIN EMAIL
 // ==================================================
 
 app.post("/api/newsletter", async (req, res) => {
@@ -215,11 +209,6 @@ app.post("/api/newsletter", async (req, res) => {
   try {
     const normalizedEmail = String(email).trim().toLowerCase();
 
-    const subscriber = await prisma.newsletterSubscriber.create({
-      data: { email: normalizedEmail },
-    });
-
-    // Notification failure should not undo a successful database subscription.
     try {
       await sendAdminEmail({
         subject: `New Newsletter Subscriber - ${normalizedEmail}`,
@@ -238,16 +227,8 @@ app.post("/api/newsletter", async (req, res) => {
     return res.status(201).json({
       success: true,
       message: "Newsletter subscription successful",
-      data: subscriber,
     });
-  } catch (error: any) {
-    if (error.code === "P2002") {
-      return res.status(409).json({
-        success: false,
-        error: "Email is already subscribed to the newsletter.",
-      });
-    }
-
+  } catch (error) {
     console.error("Newsletter Error:", error);
     return res.status(500).json({
       success: false,
@@ -415,14 +396,3 @@ if (!process.env.VERCEL) {
     console.log(`Server is running at http://localhost:${port}`);
   });
 }
-
-// Graceful Prisma shutdown
-process.on("SIGINT", async () => {
-  await prisma.$disconnect();
-  process.exit(0);
-});
-
-process.on("SIGTERM", async () => {
-  await prisma.$disconnect();
-  process.exit(0);
-});
