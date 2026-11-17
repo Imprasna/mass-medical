@@ -406,16 +406,15 @@ app.post("/api/product-request", async (req, res) => {
 // START SERVER
 // ==================================================
 
+// Export Express app for Vercel Serverless Functions
+export default app;
+
 // Local development only
-if (process.env.NODE_ENV !== "production") {
-  app.listen(port, () => {
+if (!process.env.VERCEL) {
+  app.listen(port, "0.0.0.0", () => {
     console.log(`Server is running at http://localhost:${port}`);
   });
 }
-
-// Export Express app for Vercel
-export default app;
-
 
 // Graceful Prisma shutdown
 process.on("SIGINT", async () => {
