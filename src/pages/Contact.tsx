@@ -1,7 +1,17 @@
+/** @jsxRuntime classic */
+/** @jsx React.createElement */
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { SEO } from '../components/SEO';
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [elementName: string]: any;
+    }
+  }
+}
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -105,7 +115,7 @@ export const Contact = () => {
               </div>
               <div>
                 <p className="text-[10px] font-bold text-black/40 uppercase tracking-widest">Call Us</p>
-                <p className="text-lg md:text-xl font-bold">+1 (555) 000-1234</p>
+                <p className="text-lg md:text-xl font-bold">+91 84284 28552</p>
               </div>
             </div>
             <div className="flex items-center gap-4 md:gap-6 sm:col-span-2 lg:col-span-1">
@@ -114,7 +124,7 @@ export const Contact = () => {
               </div>
               <div>
                 <p className="text-[10px] font-bold text-black/40 uppercase tracking-widest">Visit Us</p>
-                <p className="text-lg md:text-xl font-bold">Innovation Way, San Francisco, CA</p>
+                <p className="text-lg md:text-xl font-bold">No 7, New Colony, Balasubramaniam street, KK Nagar, Chennai, Tamil Nadu -  600 078, India</p>
               </div>
             </div>
           </div>

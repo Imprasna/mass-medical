@@ -254,10 +254,13 @@ export const Footer = () => {
 
                 {/* Bottom Legal & Meta Bar */}
                 <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500 font-medium">
-                    <div className="flex items-center gap-6">
+                    <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6">
                         <span>© {new Date().getFullYear()} MASS MEDICAL</span>
                         <span className="hidden md:inline-block">•</span>
                         <span className="hidden md:inline-block">ALL RIGHTS RESERVED</span>
+                        <span className="rounded-full border border-slate-700/80 bg-slate-900/60 px-3 py-1.5 font-mono text-[10px] tracking-[0.08em] text-slate-400">
+                            GSTIN: 33CJVPP5171K1ZI
+                        </span>
                     </div>
 
                     <div className="flex items-center gap-6">
